@@ -32,7 +32,7 @@
  <div class="tasklist" id="taskList"></div>
  </section>
  <section class="card span-5" id="shorts"><div class="cardhead"><div><h3>Shorts performance log</h3><div class="sub">Enter a snapshot from YouTube Studio</div></div><span class="status manual">Not connected</span></div>
- <div class="inputrow"><label><span class="inputlabel">Views</span><input class="field" id="viewsInput" inputmode="numeric" type="number" min="0" placeholder="e.g. 1200"></label><label><span class="inputlabel">Likes</span><input class="field" id="likesInput" inputmode="numeric" type="number" min="0" placeholder="e.g. 42"></label><label><span class="inputlabel">Comments</span><input class="field" id="commentsInput" inputmode="numeric" type="number" min="0" placeholder="e.g. 8"></label><label><span class="inputlabel">Video title</span><input class="field" id="videoInput" maxlength="120" placeholder="Short title"></label></div>
+ <div class="inputrow"><label><span class="inputlabel">Views</span><input class="field" id="viewsInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 1200"></label><label><span class="inputlabel">Likes</span><input class="field" id="likesInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 42"></label><label><span class="inputlabel">Comments</span><input class="field" id="commentsInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 8"></label><label><span class="inputlabel">Video title</span><input class="field" id="videoInput" maxlength="120" placeholder="Short title"></label></div>
  <button class="btn primary" style="width:100%;margin-top:12px" onclick="saveStats()">Save stats snapshot</button><div class="note">Analytics are not pulled automatically yet. This panel only displays figures you enter; connect an approved YouTube Analytics integration to automate data collection.</div><div id="lastSnapshot" class="sub" style="margin-top:10px"></div>
  </section>
  <section class="card span-6" id="projects"><div class="cardhead"><h3>Project launchpad</h3><span class="status">Quick links</span></div><div class="links">
@@ -56,7 +56,7 @@
  <div class="span-4"><strong>Email and comment alerts</strong><div class="sub">Configure alerts in the source apps first. No inbox, comments or messages are read by this dashboard.</div></div>
  </div></section>
 </div>
-<div class="foot">STG Command Centre · Your task list and manual metrics stay in this browser on this device. Export a backup before clearing browser data.</div>
+<div class="foot">STG Command Centre · Tasks, checklist and manual metrics stay in this browser on this device. Export a backup before clearing browser data.</div>
 </div>
 <nav class="bottomnav"><a href="#home"><span>⌂</span>Home</a><a href="#tasks"><span>☑</span>Tasks</a><a href="#shorts"><span>▶</span>Shorts</a><a href="#projects"><span>↗</span>Projects</a><a href="#checklist"><span>✓</span>Checks</a></nav>
 <script>
@@ -75,8 +75,38 @@ function persist(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){a
 function renderTasks(){const list=document.getElementById('taskList');list.innerHTML='';data.tasks.forEach((t,i)=>{const row=document.createElement('div');row.className='task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;cb.setAttribute('aria-label','Mark task complete');cb.onchange=()=>{data.tasks[i].done=cb.checked;persist()};const body=document.createElement('div');body.className='taskbody';const name=document.createElement('div');name.className='taskname';name.textContent=t.text;const tag=document.createElement('span');tag.className='tag';tag.textContent=t.project;body.append(name,tag);const del=document.createElement('button');del.className='delete';del.textContent='×';del.title='Delete task';del.setAttribute('aria-label','Delete task');del.onclick=()=>{data.tasks.splice(i,1);persist()};row.append(cb,body,del);list.append(row)});if(!data.tasks.length)list.innerHTML='<div class="empty">All clear. Add your next task above.</div>';const done=data.tasks.filter(t=>t.done).length,open=data.tasks.length-done;document.getElementById('openCount').textContent=open;document.getElementById('doneText').textContent=done+' completed';const p=data.tasks.length?Math.round(done/data.tasks.length*100):0;document.getElementById('progressText').textContent=p+'%';document.getElementById('taskMeter').style.width=p+'%'}
 document.getElementById('taskForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('taskInput'),text=input.value.trim();if(!text)return;data.tasks.unshift({text,project:document.getElementById('taskProject').value,done:false});input.value='';persist()});
 function clearCompleted(){data.tasks=data.tasks.filter(t=>!t.done);persist()}
-function saveStats(){const val=id=>{const v=document.getElementById(id).value;return v===''?null:Number(v)};data.stats={views:val('viewsInput'),likes:val('likesInput'),comments:val('commentsInput'),title:document.getElementById('videoInput').value.trim(),savedAt:new Date().toISOString()};persist()}
-function renderStats(){const s=data.stats;if(!s){document.getElementById('viewsMetric').innerHTML='— <small>views</small>';document.getElementById('likesSummary').textContent='Likes: —';document.getElementById('commentsSummary').textContent='Comments: —';document.getElementById('lastSnapshot').textContent='No snapshot saved yet.';return}document.getElementById('viewsMetric').innerHTML=(s.views==null?'—':s.views.toLocaleString())+' <small>views</small>';document.getElementById('likesSummary').textContent='Likes: '+(s.likes==null?'—':s.likes.toLocaleString());document.getElementById('commentsSummary').textContent='Comments: '+(s.comments==null?'—':s.comments.toLocaleString());document.getElementById('lastSnapshot').textContent='Last saved: '+new Date(s.savedAt).toLocaleString()+(s.title?' · '+s.title:'')}
+function saveStats(){
+ const count=id=>{
+  const raw=document.getElementById(id).value;
+  if(raw==='')return null;
+  const value=Number(raw);
+  if(!Number.isSafeInteger(value)||value<0)throw new Error('Enter a whole number of zero or more for views, likes and comments.');
+  return value;
+ };
+ try{
+  data.stats={views:count('viewsInput'),likes:count('likesInput'),comments:count('commentsInput'),title:document.getElementById('videoInput').value.trim().slice(0,120),savedAt:new Date().toISOString()};
+  persist();
+ }catch(error){alert(error.message||'Please check the statistics and try again.')}
+}
+function renderStats(){
+ const s=data.stats;
+ const metric=document.getElementById('viewsMetric');
+ const countText=value=>typeof value==='number'&&Number.isSafeInteger(value)&&value>=0?value.toLocaleString():'—';
+ const unit=document.createElement('small');unit.textContent='views';
+ metric.replaceChildren(document.createTextNode(s?countText(s.views)+' ':'— '),unit);
+ if(!s){
+  document.getElementById('likesSummary').textContent='Likes: —';
+  document.getElementById('commentsSummary').textContent='Comments: —';
+  document.getElementById('lastSnapshot').textContent='No snapshot saved yet.';
+  return;
+ }
+ document.getElementById('likesSummary').textContent='Likes: '+countText(s.likes);
+ document.getElementById('commentsSummary').textContent='Comments: '+countText(s.comments);
+ const date=s.savedAt?new Date(s.savedAt):null;
+ const savedLabel=date&&Number.isFinite(date.getTime())?date.toLocaleString():'Unknown time';
+ const title=typeof s.title==='string'?s.title.slice(0,120):'';
+ document.getElementById('lastSnapshot').textContent='Last saved: '+savedLabel+(title?' · '+title:'');
+}
 const CHECK_KEY='stg-command-centre-checks-v1';
 function loadChecks(){try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');document.querySelectorAll('#checks input[type=checkbox]').forEach((c,i)=>{c.checked=!!saved[i]})}catch(e){}}
 function saveChecks(){try{localStorage.setItem(CHECK_KEY,JSON.stringify([...document.querySelectorAll('#checks input[type=checkbox]')].map(c=>c.checked)))}catch(e){}}
@@ -89,7 +119,9 @@ function importData(event){
   const incoming=JSON.parse(String(reader.result||''));
   if(!incoming||!Array.isArray(incoming.tasks))throw new Error('This is not a valid STG Command Centre backup.');
   if(!confirm('Restore this backup? It will replace the tasks and Shorts snapshot saved on this device.'))return;
-  data={tasks:incoming.tasks.filter(t=>t&&typeof t.text==='string').map(t=>({text:t.text.slice(0,180),project:typeof t.project==='string'?t.project:'General',done:!!t.done})),stats:incoming.stats&&typeof incoming.stats==='object'?incoming.stats:null};
+  const rawStats=incoming.stats&&typeof incoming.stats==='object'&&!Array.isArray(incoming.stats)?incoming.stats:null;
+  const safeCount=value=>typeof value==='number'&&Number.isSafeInteger(value)&&value>=0?value:null;
+  data={tasks:incoming.tasks.filter(t=>t&&typeof t.text==='string').map(t=>({text:t.text.slice(0,180),project:typeof t.project==='string'?t.project.slice(0,40):'General',done:!!t.done})),stats:rawStats?{views:safeCount(rawStats.views),likes:safeCount(rawStats.likes),comments:safeCount(rawStats.comments),title:typeof rawStats.title==='string'?rawStats.title.slice(0,120):'',savedAt:typeof rawStats.savedAt==='string'&&Number.isFinite(Date.parse(rawStats.savedAt))?new Date(rawStats.savedAt).toISOString():new Date().toISOString()}:null};
   if(Array.isArray(incoming.checks)){try{localStorage.setItem(CHECK_KEY,JSON.stringify(incoming.checks.map(Boolean)))}catch(e){}}
   persist();loadChecks();alert('Backup restored on this device.');
  }catch(err){alert(err.message||'Could not read this backup file.');}finally{input.value='';}};
