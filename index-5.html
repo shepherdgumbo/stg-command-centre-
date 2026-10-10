@@ -19,6 +19,22 @@
 @media(max-width:820px){.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:span 6}.hero{align-items:flex-start;flex-direction:column}.top{align-items:flex-start}.taskform{grid-template-columns:1fr 110px}.taskform .btn{grid-column:span 2}.wrap{padding-top:15px}}
 @media(max-width:560px){.wrap{padding:13px 12px 95px}.pill{display:none}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}.card{padding:15px;border-radius:16px}.hero h2{font-size:29px}.links{grid-template-columns:1fr 1fr}.linktile{padding:10px 8px;gap:7px}.linkicon{width:30px;height:30px}.linktile strong{font-size:12px}.taskform{grid-template-columns:1fr}.taskform .btn{grid-column:auto}.inputrow{grid-template-columns:1fr 1fr}.bottomnav{display:flex;position:fixed;bottom:0;left:0;right:0;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:#0a1120ed;border-top:1px solid var(--line);justify-content:space-around;backdrop-filter:blur(14px);z-index:10}.bottomnav a{font-size:11px;color:var(--muted);text-align:center}.bottomnav span{display:block;font-size:19px}}
 </style>
+
+<style>
+.daily-run{border-color:#36506a;background:linear-gradient(120deg,rgba(22,43,62,.98),rgba(16,27,45,.98))}
+.run-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.run-item{border:1px solid var(--line);border-radius:13px;background:#0e1828;padding:13px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.run-top{display:flex;align-items:center;gap:8px}
+.run-number{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#203b50;color:var(--teal);font-size:12px;font-weight:850;flex-shrink:0}
+.run-item strong{font-size:13px;line-height:1.35}
+.run-item p{font-size:12px;color:var(--muted);line-height:1.45;margin:0;flex:1}
+.run-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:2px}
+.run-links a{color:var(--teal);font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.run-note{margin:12px 0 0;color:var(--muted);font-size:11px}
+@media(max-width:820px){.run-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:430px){.run-grid{grid-template-columns:1fr}.run-item{padding:12px}}
+</style>
+
 </head>
 <body>
 <div class="wrap" id="home">
@@ -31,6 +47,17 @@
  <div class="actions"><button class="btn" id="installButton" type="button" hidden onclick="installApp()">Install app</button><button class="btn" onclick="exportData()">Export backup</button><button class="btn" onclick="document.getElementById('backupInput').click()">Import backup</button><input id="backupInput" type="file" accept="application/json,.json" hidden onchange="importData(event)"><button class="btn primary" onclick="document.getElementById('taskInput').focus()">+ Add task</button></div>
 </section>
 <div class="grid">
+ <section class="card span-12 daily-run" id="dailyRun" aria-label="Daily operating run">
+  <div class="cardhead"><div><h3>Today's operating run</h3><div class="sub">Use this order to turn the dashboard into real work.</div></div><span class="status manual">Verify manually</span></div>
+  <div class="run-grid">
+   <article class="run-item"><div class="run-top"><span class="run-number">01</span><strong>Confirm this dashboard is published</strong></div><p>Open the public page and check the latest Pages run before relying on a change.</p><div class="run-links"><a href="https://github.com/shepherdgumbo/stg-command-centre-/actions" target="_blank" rel="noopener">View deployment runs ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">02</span><strong>Test ZesaTracker</strong></div><p>Open the solar planner, check official ZETDC links and test the fault-report journey. Do not treat the site as a live outage feed.</p><div class="run-links"><a href="https://zesatracker-5nf6-seven.vercel.app/" target="_blank" rel="noopener">Open live site ↗</a><a href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener">Open code ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">03</span><strong>Check ZimMarket</strong></div><p>Inspect the storefront for genuine approved listings and confirm seller approval is still required. Never fill gaps with demo inventory.</p><div class="run-links"><a href="https://zimmarket-d4b35.web.app/" target="_blank" rel="noopener">Open store ↗</a><a href="https://console.firebase.google.com/project/zimmarket-d4b35/overview" target="_blank" rel="noopener">Open Firebase ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">04</span><strong>Publish and review content</strong></div><p>Check the latest Short, review real comments, respond where needed, then enter the actual figures in the Shorts log below.</p><div class="run-links"><a href="https://studio.youtube.com/" target="_blank" rel="noopener">Open YouTube Studio ↗</a><a href="https://www.youtube.com/@zimmarkert06" target="_blank" rel="noopener">Open channel ↗</a></div></article>
+  </div>
+  <p class="run-note">This runbook opens your real project tools. It does not claim to test them automatically; mark a task complete only after you have checked it.</p>
+ </section>
+
  <section class="card span-3"><div class="cardhead"><h3>Today's focus</h3><span class="status neutral">Tasks</span></div><div class="metric" id="openCount">0</div><div class="sub">open tasks to move forward</div><div class="meter"><span id="taskMeter"></span></div><div class="metricrow"><span id="doneText">0 completed</span><span id="progressText">0%</span></div></section>
  <section class="card span-3"><div class="cardhead"><h3>YouTube Shorts</h3><span class="status manual">Manual stats</span></div><div class="metric" id="viewsMetric">— <small>views</small></div><div class="sub">Latest figures you enter below</div><div class="metricrow" style="margin-top:12px"><span id="likesSummary">Likes: —</span><span id="commentsSummary">Comments: —</span></div></section>
  <section class="card span-3"><div class="cardhead"><h3>ZesaTracker</h3><span class="status neutral">Live link</span></div><div class="metric" style="font-size:21px">Website</div><div class="sub">Solar planner · AI assistant · fault reports</div><a class="smallbtn" href="https://zesatracker-5nf6-seven.vercel.app/" target="_blank" rel="noopener">Open live site ↗</a></section>
