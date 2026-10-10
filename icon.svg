@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#41dfc2"/><stop offset="1" stop-color="#5886ff"/></linearGradient></defs>
+<rect width="512" height="512" rx="118" fill="#0b1120"/>
+<rect x="40" y="40" width="432" height="432" rx="100" fill="url(#g)"/>
+<path d="M126 153h260v46H126zm0 80h260v46H126zm0 80h172v46H126z" fill="#0b1120" opacity=".22"/>
+<text x="256" y="292" text-anchor="middle" dominant-baseline="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="124" letter-spacing="-8" fill="#0b1120">STG</text>
+<circle cx="380" cy="372" r="24" fill="#0b1120"/><path d="M369 372l8 8 15-17" fill="none" stroke="#41dfc2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
