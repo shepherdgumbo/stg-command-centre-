@@ -7,6 +7,7 @@ A mobile-friendly personal workspace for project tasks, manually entered YouTube
 ## Features
 
 - Add, complete, categorize, and delete tasks.
+- Follow a daily operating runbook with direct links to real project sites, source code, and deployment history.
 - Track a manual YouTube Shorts snapshot (views, likes, comments, and title).
 - Export and import a JSON backup, including task and checklist state.
 - Persist the deployment checklist on the current browser profile.
