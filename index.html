@@ -38,10 +38,10 @@
  <section class="card span-6" id="projects"><div class="cardhead"><h3>Project launchpad</h3><span class="status">Quick links</span></div><div class="links">
  <a class="linktile" href="https://studio.youtube.com/" target="_blank" rel="noopener"><span class="linkicon">▶</span><span><strong>YouTube Studio</strong><small>Comments & analytics</small></span></a>
  <a class="linktile" href="https://www.youtube.com/@zimmarkert06" target="_blank" rel="noopener"><span class="linkicon">YT</span><span><strong>ZimMarket channel</strong><small>View published content</small></span></a>
- <a class="linktile" href="https://app.netlify.com/projects/zesatracker-zw/" target="_blank" rel="noopener"><span class="linkicon">N</span><span><strong>Netlify</strong><small>ZesaTracker deploys</small></span></a>
- <a class="linktile" href="https://github.com/shepherdgumbo/Zesa-tracker" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>ZesaTracker GitHub</strong><small>Code & changes</small></span></a>
+ <a class="linktile" href="https://vercel.com/stg8/zesatracker-5nf6" target="_blank" rel="noopener"><span class="linkicon">N</span><span><strong>Netlify</strong><small>ZesaTracker deploys</small></span></a>
+ <a class="linktile" href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>ZesaTracker GitHub</strong><small>Code & changes</small></span></a>
  <a class="linktile" href="https://console.firebase.google.com/project/zimmarket-d4b35/overview" target="_blank" rel="noopener"><span class="linkicon">F</span><span><strong>Firebase Console</strong><small>ZimMarket hosting/backend</small></span></a>
- <a class="linktile" href="https://vercel.com/" target="_blank" rel="noopener"><span class="linkicon">▲</span><span><strong>Vercel</strong><small>Deployments & projects</small></span></a>
+ <a class="linktile" href="https://vercel.com/stg8/zesatracker-5nf6" target="_blank" rel="noopener"><span class="linkicon">▲</span><span><strong>Vercel · ZesaTracker</strong><small>Production deployments</small></span></a>
  </div></section>
  <section class="card span-6" id="checklist"><div class="cardhead"><h3>Post-deployment check</h3><span class="status neutral">Checklist</span></div><div class="sub" style="margin-bottom:12px">Use after every code change or deployment.</div><div class="tasklist" id="checks">
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Open the live website on mobile</span><span class="tag">Responsive layout and loading</span></span></label>
@@ -77,7 +77,11 @@ document.getElementById('taskForm').addEventListener('submit',e=>{e.preventDefau
 function clearCompleted(){data.tasks=data.tasks.filter(t=>!t.done);persist()}
 function saveStats(){const val=id=>{const v=document.getElementById(id).value;return v===''?null:Number(v)};data.stats={views:val('viewsInput'),likes:val('likesInput'),comments:val('commentsInput'),title:document.getElementById('videoInput').value.trim(),savedAt:new Date().toISOString()};persist()}
 function renderStats(){const s=data.stats;if(!s){document.getElementById('viewsMetric').innerHTML='— <small>views</small>';document.getElementById('likesSummary').textContent='Likes: —';document.getElementById('commentsSummary').textContent='Comments: —';document.getElementById('lastSnapshot').textContent='No snapshot saved yet.';return}document.getElementById('viewsMetric').innerHTML=(s.views==null?'—':s.views.toLocaleString())+' <small>views</small>';document.getElementById('likesSummary').textContent='Likes: '+(s.likes==null?'—':s.likes.toLocaleString());document.getElementById('commentsSummary').textContent='Comments: '+(s.comments==null?'—':s.comments.toLocaleString());document.getElementById('lastSnapshot').textContent='Last saved: '+new Date(s.savedAt).toLocaleString()+(s.title?' · '+s.title:'')}
-function resetChecks(){document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.checked=false)}
+const CHECK_KEY='stg-command-centre-checks-v1';
+function loadChecks(){try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');document.querySelectorAll('#checks input[type=checkbox]').forEach((c,i)=>{c.checked=!!saved[i]})}catch(e){}}
+function saveChecks(){try{localStorage.setItem(CHECK_KEY,JSON.stringify([...document.querySelectorAll('#checks input[type=checkbox]')].map(c=>c.checked)))}catch(e){}}
+document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.addEventListener('change',saveChecks));
+function resetChecks(){document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.checked=false);saveChecks()}
 function importData(event){
  const input=event.target;const file=input.files&&input.files[0];if(!file)return;
  const reader=new FileReader();
@@ -86,14 +90,15 @@ function importData(event){
   if(!incoming||!Array.isArray(incoming.tasks))throw new Error('This is not a valid STG Command Centre backup.');
   if(!confirm('Restore this backup? It will replace the tasks and Shorts snapshot saved on this device.'))return;
   data={tasks:incoming.tasks.filter(t=>t&&typeof t.text==='string').map(t=>({text:t.text.slice(0,180),project:typeof t.project==='string'?t.project:'General',done:!!t.done})),stats:incoming.stats&&typeof incoming.stats==='object'?incoming.stats:null};
-  persist();alert('Backup restored on this device.');
+  if(Array.isArray(incoming.checks)){try{localStorage.setItem(CHECK_KEY,JSON.stringify(incoming.checks.map(Boolean)))}catch(e){}}
+  persist();loadChecks();alert('Backup restored on this device.');
  }catch(err){alert(err.message||'Could not read this backup file.');}finally{input.value='';}};
  reader.onerror=()=>{alert('Unable to read the selected file.');input.value='';};
  reader.readAsText(file);
 }
-function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='stg-command-centre-backup.json';a.click();URL.revokeObjectURL(url)}
+function exportData(){const backup={...data,checks:[...document.querySelectorAll('#checks input[type=checkbox]')].map(c=>c.checked),exportedAt:new Date().toISOString(),app:'STG Command Centre'};const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='stg-command-centre-backup.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 document.getElementById('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'short',day:'numeric'});
-renderTasks();renderStats();
+renderTasks();renderStats();loadChecks();
 </script>
 </body>
 </html>
