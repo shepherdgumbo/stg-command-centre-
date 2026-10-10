@@ -2,7 +2,7 @@
 
 A mobile-friendly personal workspace for project tasks, manually entered YouTube Shorts metrics, project launch links, and post-deployment checks.
 
-**Live site:** https://shepherdgumbo.github.io/stg-command-centre/
+**Live site:** https://shepherdgumbo.github.io/stg-command-centre-/
 
 ## Features
 
