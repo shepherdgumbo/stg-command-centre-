@@ -42,17 +42,18 @@
  <a class="linktile" href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>ZesaTracker GitHub</strong><small>Code & changes</small></span></a>
  <a class="linktile" href="https://console.firebase.google.com/project/zimmarket-d4b35/overview" target="_blank" rel="noopener"><span class="linkicon">F</span><span><strong>Firebase Console</strong><small>ZimMarket hosting/backend</small></span></a>
  <a class="linktile" href="https://vercel.com/stg8/zesatracker-5nf6" target="_blank" rel="noopener"><span class="linkicon">▲</span><span><strong>Vercel · ZesaTracker</strong><small>Production deployments</small></span></a>
+ <a class="linktile" href="https://github.com/shepherdgumbo/stg-command-centre-/actions" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>Command Centre deploys</strong><small>GitHub Pages build status</small></span></a>
  </div></section>
  <section class="card span-6" id="checklist"><div class="cardhead"><h3>Post-deployment check</h3><span class="status neutral">Checklist</span></div><div class="sub" style="margin-bottom:12px">Use after every code change or deployment.</div><div class="tasklist" id="checks">
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Open the live website on mobile</span><span class="tag">Responsive layout and loading</span></span></label>
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Test navigation, buttons and forms</span><span class="tag">Main user journeys</span></span></label>
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Check changed features and existing features</span><span class="tag">Avoid regressions</span></span></label>
- <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Review build/deploy result and errors</span><span class="tag">Netlify, Firebase or Vercel</span></span></label>
+ <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Review build/deploy result and errors</span><span class="tag">GitHub Pages, Vercel or Firebase</span></span></label>
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Confirm no demo or invented live data</span><span class="tag">Especially listings and electricity outages</span></span></label>
  </div><button class="smallbtn" onclick="resetChecks()">Reset checklist</button></section>
  <section class="card span-12"><div class="cardhead"><h3>Automation status</h3><span class="status manual">Setup needed</span></div><div class="grid">
  <div class="span-4"><strong>YouTube data sync</strong><div class="sub">Manual entry is available. Automatic daily analytics require a connected integration and authorization.</div></div>
- <div class="span-4"><strong>Deployment alerts</strong><div class="sub">Open Netlify/Firebase/Vercel from the launchpad to configure provider notifications. This dashboard does not currently monitor deployments in the background.</div></div>
+ <div class="span-4"><strong>Deployment alerts</strong><div class="sub">GitHub Pages builds run automatically when this repository changes. Open Command Centre deploys for build results; use Vercel for ZesaTracker and Firebase Console for ZimMarket. Background monitoring and automatic alerts are not enabled in this dashboard.</div></div>
  <div class="span-4"><strong>Email and comment alerts</strong><div class="sub">Configure alerts in the source apps first. No inbox, comments or messages are read by this dashboard.</div></div>
  </div></section>
 </div>
