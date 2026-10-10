@@ -1,17 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="refresh" content="0; url=./index-5.html">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101827">
-<title>STG Command Centre</title> html>
-<html lang="en">
-<head><!doctype html>
-<html lang="en">
-<head>
-<meta http-equiv="refresh" content="0; url=./index-5.html">
-<meta charset="utf-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101827">
@@ -31,7 +20,7 @@
 </header>
 <section class="hero">
  <div><h2>Build. Publish. Grow.</h2><p>Your quick view for content, websites and next actions. Keep the important work moving without jumping between tabs.</p></div>
- <div class="actions"><button class="btn" onclick="exportData()">Export backup</button><button class="btn primary" onclick="document.getElementById('taskInput').focus()">+ Add task</button></div>
+ <div class="actions"><button class="btn" onclick="exportData()">Export backup</button><button class="btn" onclick="document.getElementById('backupInput').click()">Import backup</button><input id="backupInput" type="file" accept="application/json,.json" hidden onchange="importData(event)"><button class="btn primary" onclick="document.getElementById('taskInput').focus()">+ Add task</button></div>
 </section>
 <div class="grid">
  <section class="card span-3"><div class="cardhead"><h3>Today's focus</h3><span class="status neutral">Tasks</span></div><div class="metric" id="openCount">0</div><div class="sub">open tasks to move forward</div><div class="meter"><span id="taskMeter"></span></div><div class="metricrow"><span id="doneText">0 completed</span><span id="progressText">0%</span></div></section>
@@ -89,6 +78,19 @@ function clearCompleted(){data.tasks=data.tasks.filter(t=>!t.done);persist()}
 function saveStats(){const val=id=>{const v=document.getElementById(id).value;return v===''?null:Number(v)};data.stats={views:val('viewsInput'),likes:val('likesInput'),comments:val('commentsInput'),title:document.getElementById('videoInput').value.trim(),savedAt:new Date().toISOString()};persist()}
 function renderStats(){const s=data.stats;if(!s){document.getElementById('viewsMetric').innerHTML='— <small>views</small>';document.getElementById('likesSummary').textContent='Likes: —';document.getElementById('commentsSummary').textContent='Comments: —';document.getElementById('lastSnapshot').textContent='No snapshot saved yet.';return}document.getElementById('viewsMetric').innerHTML=(s.views==null?'—':s.views.toLocaleString())+' <small>views</small>';document.getElementById('likesSummary').textContent='Likes: '+(s.likes==null?'—':s.likes.toLocaleString());document.getElementById('commentsSummary').textContent='Comments: '+(s.comments==null?'—':s.comments.toLocaleString());document.getElementById('lastSnapshot').textContent='Last saved: '+new Date(s.savedAt).toLocaleString()+(s.title?' · '+s.title:'')}
 function resetChecks(){document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.checked=false)}
+function importData(event){
+ const input=event.target;const file=input.files&&input.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{try{
+  const incoming=JSON.parse(String(reader.result||''));
+  if(!incoming||!Array.isArray(incoming.tasks))throw new Error('This is not a valid STG Command Centre backup.');
+  if(!confirm('Restore this backup? It will replace the tasks and Shorts snapshot saved on this device.'))return;
+  data={tasks:incoming.tasks.filter(t=>t&&typeof t.text==='string').map(t=>({text:t.text.slice(0,180),project:typeof t.project==='string'?t.project:'General',done:!!t.done})),stats:incoming.stats&&typeof incoming.stats==='object'?incoming.stats:null};
+  persist();alert('Backup restored on this device.');
+ }catch(err){alert(err.message||'Could not read this backup file.');}finally{input.value='';}};
+ reader.onerror=()=>{alert('Unable to read the selected file.');input.value='';};
+ reader.readAsText(file);
+}
 function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='stg-command-centre-backup.json';a.click();URL.revokeObjectURL(url)}
 document.getElementById('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'short',day:'numeric'});
 renderTasks();renderStats();
