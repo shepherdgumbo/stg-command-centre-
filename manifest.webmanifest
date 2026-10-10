@@ -1,0 +1,22 @@
+{
+  "id": "./",
+  "name": "STG Command Centre",
+  "short_name": "STG Centre",
+  "description": "A personal workspace for tasks, YouTube Shorts metrics, project links and deployment checks.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1120",
+  "theme_color": "#101827",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
