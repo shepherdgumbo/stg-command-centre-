@@ -71,91 +71,19 @@
   function stateLabel(ok) { return ok ? "● Up" : "● Down"; }
 
   async function render(root) {
-    const [yt, status, auto] = await Promise.all([load("youtube.json"), load("status.json"), load("auto-tasks.json")]);
+    const [yt,status,auto]=await Promise.all([load('youtube.json'),load('status.json'),load('auto-tasks.json')]);
     root.replaceChildren();
-
-    const newest = [yt?.updatedAt, status?.updatedAt, auto?.updatedAt].filter(Boolean).sort().pop();
-    root.append(
-      el("div", { class: "ccs-head" },
-        el("div", {},
-          el("h2", { text: "Live sync" }),
-          el("div", { class: "ccs-sub", text: newest ? `Updated ${ago(newest)} · refreshes twice a day` : "No sync data yet" })
-        ),
-        el("button", { type: "button", text: "Reload", onclick: () => render(root) })
-      )
-    );
-
-    if (!yt && !status && !auto) {
-      root.append(el("div", { class: "ccs-err", text: "No data found. In GitHub, open Actions, choose “Command Centre sync” and press Run workflow once." }));
-      return;
-    }
-
-    // Suggested tasks
-    const done = new Set(loadDone());
-    const open = (auto?.tasks || []).filter((t) => !done.has(t.id));
-    root.append(el("h3", { text: `Suggested tasks (${open.length})` }));
-    if (!open.length) {
-      root.append(el("div", { class: "ccs-sub", text: "Nothing suggested right now." }));
-    } else {
-      root.append(el("ul", {}, open.map((t) => {
-        const box = el("input", { type: "checkbox", "aria-label": `Mark done: ${t.title}` });
-        box.addEventListener("change", () => {
-          const d = loadDone();
-          d.push(t.id);
-          saveDone(d);
-          render(root);
-        });
-        return el("li", { class: "ccs-task" }, box,
-          el("div", {},
-            el("div", {}, `${t.tag ? t.tag + ": " : ""}${t.title}`),
-            el("small", {}, t.reason || "", t.link ? " · " : "", t.link ? link(t.link, "Open") : null)
-          ));
-      })));
-    }
-
-    // YouTube
-    root.append(el("h3", { text: "YouTube Shorts" }));
-    if (yt?.error) root.append(el("div", { class: "ccs-err", text: `YouTube sync problem: ${yt.error}` }));
-    const last = yt?.shorts?.[0];
-    if (last) {
-      root.append(el("ul", {},
-        el("li", {},
-          el("div", { class: "ccs-row" }, el("strong", {}, link(last.url, last.title)), el("span", { text: ago(last.publishedAt) })),
-          el("small", { text: `${num(last.views)} views · ${num(last.likes)} likes · ${num(last.comments)} comments` })
-        ),
-        yt.channel ? el("li", {}, el("small", { text: `${yt.channel.title}: ${num(yt.channel.subscribers)} subscribers · ${num(yt.channel.totalViews)} total views` })) : null
-      ));
-    } else if (!yt?.error) {
-      root.append(el("div", { class: "ccs-sub", text: "No Shorts found yet." }));
-    }
-
-    // Sites
-    root.append(el("h3", { text: "Live sites" }));
-    root.append(el("ul", {}, (status?.sites || []).map((s) =>
-      el("li", {},
-        el("div", { class: "ccs-row" },
-          el("strong", {}, link(s.url, s.name)),
-          el("span", { class: s.ok ? "" : "ccs-bad", text: `${stateLabel(s.ok)}${s.status ? ` · ${s.status}` : ""}` })
-        ),
-        el("small", { text: s.ok ? `${s.ms} ms · checked ${ago(s.checkedAt)}` : `${s.error || "No response"} · down since ${ago(s.downSince)}` })
-      ))));
-    if (!status?.sites?.length) root.append(el("div", { class: "ccs-sub", text: "No sites configured yet." }));
-
-    // Deploys
-    root.append(el("h3", { text: "Builds and deployments" }));
-    root.append(el("ul", {}, (status?.repos || []).map((r) => {
-      const bits = [];
-      if (r.run) bits.push(`${r.run.workflow}: ${r.run.status === "completed" ? r.run.conclusion : r.run.status} (${ago(r.run.at)})`);
-      if (r.deployment) bits.push(`${r.deployment.environment || "Deploy"}: ${r.deployment.state}`);
-      return el("li", {},
-        el("div", { class: "ccs-row" }, el("strong", {}, link(r.run?.url || r.url, r.name))),
-        el("small", { text: bits.join(" · ") || "No runs or deployments found" }),
-        r.notes?.length ? el("small", { text: r.notes.join(" · ") }) : null
-      );
-    })));
-    if (!status?.repos?.length) root.append(el("div", { class: "ccs-sub", text: "No repos configured yet." }));
+    const newest=[yt?.updatedAt,status?.updatedAt,auto?.updatedAt].filter(Boolean).sort().pop();
+    root.append(el('div',{class:'ccs-head'},el('div',{},el('h2',{text:'Live sync'}),el('div',{class:'ccs-sub',{text:newest?'Updated '+ago(newest)+' · automatic checks twice a day':'No sync data yet'}})),el('button',{type:'button',text:'Reload',onclick:()=>render(root)})));
+    if(!yt&&!status&&!auto){root.append(el('div',{class:'ccs-err',text:'No sync data found yet.'}));return;}
+    const done=new Set(loadDone()),open=(auto?.tasks||[]).filter(t=>!done.has(t.id));
+    root.append(el('h3',{text:'Suggested tasks ('+open.length+')'}),open.length?el('ul',{},open.map(t=>{const box=el('input',{type:'checkbox','aria-label':'Mark done: '+t.title});box.addEventListener('change',()=>{const d=loadDone();d.push(t.id);saveDone(d);render(root)});return el('li',{class:'ccs-task'},box,el('div',{},el('div',{text:(t.tag?t.tag+': ':'')+t.title},t.link?el('small',{},link(t.link,'Open')):null))})):el('div',{class:'ccs-sub',text:'Nothing suggested right now.'}));
+    root.append(el('h3',{text:'YouTube Shorts'}));
+    if(yt?.available===false&&yt?.reason)root.append(el('div',{class:'ccs-err',text:'YouTube sync: '+yt.reason+'. The dashboard remains functional; check YouTube Data API v3 enablement/restrictions.'}));
+    if(yt?.available&&yt.channel){const l=yt.latestShort;root.append(el('ul',{},l?el('li',{},el('div',{class:'ccs-row'},el('strong',{},link('https://www.youtube.com/shorts/'+l.id,l.title)),el('span',{text:ago(l.publishedAt)})),el('small',{text:num(l.views)+' views · '+num(l.likes)+' likes · '+num(l.comments)+' comments'})):el('li',{text:'No recent Short found.'}),el('li',{},el('small',{text:yt.channel.title+': '+num(yt.channel.subscribers)+' subscribers · '+num(yt.channel.views)+' total views · '+num(yt.channel.videos)+' videos'}))));}
+    root.append(el('h3',{text:'Live sites'}));const sites=status?.sites||[];root.append(el('ul',{},sites.map(s=>el('li',{},el('div',{class:'ccs-row'},el('strong',{},link(s.url,s.name)),el('span',{class:s.up?'':'ccs-bad',text:s.up?'● Up':'● Down'})),el('small',{text:s.up?'HTTP '+s.status+' · checked '+ago(s.checkedAt):'No response · checked '+ago(s.checkedAt)})))));
+    root.append(el('h3',{text:'Builds and deployments'}));const repos=status?.repos||[];root.append(el('ul',{},repos.map(r=>{const run=r.latestRun,st=run?(run.status==='completed'?(run.conclusion||'completed'):run.status):'No workflow run';return el('li',{},el('div',{class:'ccs-row'},el('strong',{text:r.repo}),el('span',{class:run?.conclusion==='failure'?'ccs-bad':'',text:st})),el('small',{text:run?run.name+' · updated '+ago(run.updated_at):'No run data'}))})));
   }
-
   function mount() {
     injectStyle();
     const root = el("section", { id: "cc-sync", class: "ccs", "aria-label": "Live sync" });
