@@ -1,6 +1,12 @@
 name: Command Centre sync
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/sync.mjs"
+      - "command-centre.config.json"
+      - ".github/workflows/command-centre-sync.yml"
   schedule:
     - cron: "0 6 * * *"
     - cron: "0 18 * * *"
