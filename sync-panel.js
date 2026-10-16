@@ -74,7 +74,7 @@
     const [yt,status,auto]=await Promise.all([load('youtube.json'),load('status.json'),load('auto-tasks.json')]);
     root.replaceChildren();
     const newest=[yt?.updatedAt,status?.updatedAt,auto?.updatedAt].filter(Boolean).sort().pop();
-    root.append(el('div',{class:'ccs-head'},el('div',{},el('h2',{text:'Live sync'}),el('div',{class:'ccs-sub',{text:newest?'Updated '+ago(newest)+' · automatic checks twice a day':'No sync data yet'}})),el('button',{type:'button',text:'Reload',onclick:()=>render(root)})));
+    root.append(el('div',{class:'ccs-head'},el('div',{},el('h2',{text:'Live sync'}),el('div',{class:'ccs-sub',text:newest?'Updated '+ago(newest)+' · automatic checks twice a day':'No sync data yet'})),el('button',{type:'button',text:'Reload',onclick:()=>render(root)})));
     if(!yt&&!status&&!auto){root.append(el('div',{class:'ccs-err',text:'No sync data found yet.'}));return;}
     const done=new Set(loadDone()),open=(auto?.tasks||[]).filter(t=>!done.has(t.id));
     root.append(el('h3',{text:'Suggested tasks ('+open.length+')'}),open.length?el('ul',{},open.map(t=>{const box=el('input',{type:'checkbox','aria-label':'Mark done: '+t.title});box.addEventListener('change',()=>{const d=loadDone();d.push(t.id);saveDone(d);render(root)});return el('li',{class:'ccs-task'},box,el('div',{},el('div',{text:(t.tag?t.tag+': ':'')+t.title},t.link?el('small',{},link(t.link,'Open')):null))})):el('div',{class:'ccs-sub',text:'Nothing suggested right now.'}));
