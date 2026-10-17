@@ -1,4 +1,11 @@
 {
-  "updatedAt": "2026-10-17T10:15:11.097Z",
-  "tasks": []
+  "updatedAt": "2026-10-17T18:06:07.542Z",
+  "tasks": [
+    {
+      "id": "youtube-sync-error",
+      "tag": "YouTube",
+      "title": "Fix YouTube sync: 403 — Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked. — forbidden: Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked.",
+      "link": "https://console.cloud.google.com/apis/library/youtube.googleapis.com"
+    }
+  ]
 }
