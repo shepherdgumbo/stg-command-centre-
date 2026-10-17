@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-10-17T18:06:07.542Z",
+  "updatedAt": "2026-10-17T18:30:57.158Z",
   "sites": [
     {
       "id": "zesatracker",
       "name": "ZesaTracker",
-      "url": "https://zesatracker.vercel.app/",
+      "url": "https://zesatracker-5nf6-seven.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-17T18:06:07.542Z"
+      "checkedAt": "2026-10-17T18:30:57.158Z"
     },
     {
       "id": "zimmarket",
@@ -15,7 +15,7 @@
       "url": "https://zimmarket-d4b35.web.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-17T18:06:07.542Z"
+      "checkedAt": "2026-10-17T18:30:57.158Z"
     }
   ],
   "repos": [
@@ -24,25 +24,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 39056613901,
+        "id": 39058420270,
         "name": "Command Centre sync",
-        "node_id": "WFR_kwLOVCqtYs8AAAAJF_SiDQ",
+        "node_id": "WFR_kwLOVCqtYs8AAAAJGBAyLg",
         "head_branch": "main",
-        "head_sha": "9c69c4ace5acd94df15ee06945427671ecd57d3d",
+        "head_sha": "22d79a2e2e5577cd94ba574c0c9bd15051447e59",
         "path": ".github/workflows/command-centre-sync.yml",
-        "display_title": "Improve YouTube sync error details and add repair task",
-        "run_number": 5,
+        "display_title": "fix: monitor current ZesaTracker production URL",
+        "run_number": 6,
         "event": "push",
         "status": "in_progress",
         "conclusion": null,
         "workflow_id": 386788891,
-        "check_suite_id": 105845279604,
-        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAYpN7LdA",
-        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901",
-        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39056613901",
+        "check_suite_id": 105850058258,
+        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAYpSe2Eg",
+        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270",
+        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39058420270",
         "pull_requests": [],
-        "created_at": "2026-10-17T18:05:59Z",
-        "updated_at": "2026-10-17T18:06:02Z",
+        "created_at": "2026-10-17T18:30:48Z",
+        "updated_at": "2026-10-17T18:30:51Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -66,7 +66,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-10-17T18:05:59Z",
+        "run_started_at": "2026-10-17T18:30:48Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -88,19 +88,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/105845279604",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39056613901/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/105850058258",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39058420270/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/386788891",
         "head_commit": {
-          "id": "9c69c4ace5acd94df15ee06945427671ecd57d3d",
-          "tree_id": "06e10a323105c6247fba72bd6ba3deb6eae99ffa",
-          "message": "Improve YouTube sync error details and add repair task",
-          "timestamp": "2026-10-17T18:05:57Z",
+          "id": "22d79a2e2e5577cd94ba574c0c9bd15051447e59",
+          "tree_id": "230f2b3d686bfae70e172946dd780464f88743f3",
+          "message": "fix: monitor current ZesaTracker production URL",
+          "timestamp": "2026-10-17T18:30:46Z",
           "author": {
             "name": "shepherdgumbo",
             "email": "shepherdgumbo06@gmail.com"
@@ -247,7 +247,7 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/deployments"
         }
       },
-      "checkedAt": "2026-10-17T18:06:07.542Z"
+      "checkedAt": "2026-10-17T18:30:57.158Z"
     }
   ]
 }
