@@ -1,5 +1,5 @@
 // STG Command Centre offline app shell. Task data remains in browser localStorage.
-const CACHE_NAME = 'stg-command-centre-shell-v1';
+const CACHE_NAME = 'stg-command-centre-shell-v2';
 const APP_SHELL = ['./', './index.html', './index-5.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
