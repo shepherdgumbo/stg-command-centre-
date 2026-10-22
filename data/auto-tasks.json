@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-22T10:04:54.842Z",
+  "updatedAt": "2026-10-22T10:07:44.320Z",
   "tasks": [
     {
       "id": "repo-access-shepherdgumbo/zesatracker",
       "tag": "GitHub",
       "title": "Grant Command Centre read access to shepherdgumbo/zesatracker",
-      "link": "https://github.com/shepherdgumbo/zesatracker/settings/secrets/actions"
+      "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
     },
     {
       "id": "youtube-sync-error",
