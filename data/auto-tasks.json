@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-22T10:29:09.021Z",
+  "updatedAt": "2026-10-22T10:29:59.094Z",
   "tasks": [
     {
       "id": "repo-access-shepherdgumbo/zesatracker",
       "tag": "GitHub",
-      "title": "Enable read-only access to the private ZesaTracker repository to show workflow status",
+      "title": "Enable read access to the private ZesaTracker repository",
       "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
     }
   ]
