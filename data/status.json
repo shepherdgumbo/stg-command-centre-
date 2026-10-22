@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T10:29:59.094Z",
+  "updatedAt": "2026-10-22T11:16:32.716Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,19 +7,19 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-22T10:29:59.094Z",
+      "checkedAt": "2026-10-22T11:16:32.716Z",
       "endpoints": [
         {
           "url": "https://zesatracker.vercel.app/api/health",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-10-22T10:29:59.094Z"
+          "checkedAt": "2026-10-22T11:16:32.716Z"
         },
         {
           "url": "https://zesatracker.vercel.app/api/reports",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-10-22T10:29:59.094Z"
+          "checkedAt": "2026-10-22T11:16:32.716Z"
         }
       ]
     }
@@ -29,7 +29,7 @@
       "repo": "shepherdgumbo/zesatracker",
       "name": "ZesaTracker",
       "error": "404 — Not Found",
-      "checkedAt": "2026-10-22T10:29:59.094Z"
+      "checkedAt": "2026-10-22T11:16:32.716Z"
     }
   ]
 }
