@@ -15,11 +15,19 @@ A mobile-friendly dashboard focused on one project: ZesaTracker.
 - Install as a web app where the browser supports installation.
 - Offline app shell after the first successful online load and service-worker install.
 
-## Publish
+## Hosting
 
-This is a static site. GitHub Pages publishes the repository root from `main` when files change. Deployment runs are available at:
+### GitHub Pages
+
+This is a static site. GitHub Pages publishes the repository root from `main`. Deployment runs are available at:
 
 https://github.com/shepherdgumbo/stg-command-centre-/actions
+
+### Railway
+
+The repository includes a root `Dockerfile`, `server.mjs`, and `railway.json` for Railway hosting. The lightweight server serves only the dashboard's public files, listens on Railway's injected `PORT`, and exposes `/healthz` for Railway's deployment health check.
+
+To deploy, connect this GitHub repository to a Railway service using the repository root as the source. Railway will detect the Dockerfile and build the service; generate a public domain in Railway's service networking settings after the first successful deployment. GitHub Pages remains available independently.
 
 ## Automation and access
 
@@ -34,6 +42,7 @@ The dashboard task list and checklist are stored in this browser on this device/
 - `scripts/sync.mjs` — scheduled site and repository checks
 - `sync-panel.js` — live status panel
 - `data/status.json` and `data/auto-tasks.json` — sync output
+- `Dockerfile`, `server.mjs`, and `railway.json` — Railway hosting
 - `manifest.webmanifest` and `sw.js` — installable offline shell
 
-There are no build-time package dependencies.
+There are no build-time package dependencies for the dashboard itself.
