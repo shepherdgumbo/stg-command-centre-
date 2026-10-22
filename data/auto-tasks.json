@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T10:04:32.925Z",
+  "updatedAt": "2026-10-22T10:04:54.842Z",
   "tasks": [
     {
       "id": "repo-access-shepherdgumbo/zesatracker",
@@ -10,7 +10,7 @@
     {
       "id": "youtube-sync-error",
       "tag": "YouTube",
-      "title": "Fix YouTube sync: 403 — Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked. — forbidden: Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked.",
+      "title": "Fix YouTube sync: Google Cloud is blocking YouTube Data API v3 for this key. Allow YouTube Data API v3 under API restrictions for the STG YouTube key.",
       "link": "https://console.cloud.google.com/apis/credentials"
     }
   ]

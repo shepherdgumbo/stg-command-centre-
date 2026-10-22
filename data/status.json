@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T10:04:32.925Z",
+  "updatedAt": "2026-10-22T10:04:54.842Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,7 +7,7 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-22T10:04:32.925Z"
+      "checkedAt": "2026-10-22T10:04:54.842Z"
     },
     {
       "id": "zimmarket",
@@ -15,7 +15,7 @@
       "url": "https://zimmarket-d4b35.web.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-22T10:04:32.925Z"
+      "checkedAt": "2026-10-22T10:04:54.842Z"
     }
   ],
   "repos": [
@@ -24,25 +24,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 39760315500,
-        "name": "pages build and deployment",
-        "node_id": "WFR_kwLOVCqtYs8AAAAJQeZEbA",
+        "id": 39760362319,
+        "name": "Command Centre sync",
+        "node_id": "WFR_kwLOVCqtYs8AAAAJQeb7Tw",
         "head_branch": "main",
-        "head_sha": "47474a739b6eea7aa36b0f2e7615a540310c013f",
-        "path": "dynamic/pages/pages-build-deployment",
-        "display_title": "pages build and deployment",
-        "run_number": 64,
-        "event": "dynamic",
+        "head_sha": "b6fae0b96a6b35012af762a7f8428f0b44924404",
+        "path": ".github/workflows/command-centre-sync.yml",
+        "display_title": "fix: match YouTube API restriction errors reliably",
+        "run_number": 19,
+        "event": "push",
         "status": "in_progress",
         "conclusion": null,
-        "workflow_id": 380495011,
-        "check_suite_id": 107755392834,
-        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAZFrjPQg",
-        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500",
-        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39760315500",
+        "workflow_id": 386788891,
+        "check_suite_id": 107755524508,
+        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAZFrrRnA",
+        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319",
+        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39760362319",
         "pull_requests": [],
-        "created_at": "2026-10-22T10:04:24Z",
-        "updated_at": "2026-10-22T10:04:29Z",
+        "created_at": "2026-10-22T10:04:47Z",
+        "updated_at": "2026-10-22T10:04:50Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -66,7 +66,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-10-22T10:04:24Z",
+        "run_started_at": "2026-10-22T10:04:47Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -88,19 +88,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/107755392834",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/107755524508",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760362319/rerun",
         "previous_attempt_url": null,
-        "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/380495011",
+        "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/386788891",
         "head_commit": {
-          "id": "47474a739b6eea7aa36b0f2e7615a540310c013f",
-          "tree_id": "59bdb86fc262ecb673892454736adf2d7006f450",
-          "message": "fix: report private repo and YouTube API sync blockers clearly",
-          "timestamp": "2026-10-22T10:04:21Z",
+          "id": "b6fae0b96a6b35012af762a7f8428f0b44924404",
+          "tree_id": "5b6f835aa7d835652ba88d9ad2fec9b5b24284f7",
+          "message": "fix: match YouTube API restriction errors reliably",
+          "timestamp": "2026-10-22T10:04:44Z",
           "author": {
             "name": "shepherdgumbo",
             "email": "shepherdgumbo06@gmail.com"
@@ -247,12 +247,12 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/deployments"
         }
       },
-      "checkedAt": "2026-10-22T10:04:32.925Z"
+      "checkedAt": "2026-10-22T10:04:54.842Z"
     },
     {
       "repo": "shepherdgumbo/zesatracker",
       "error": "404 — Not Found",
-      "checkedAt": "2026-10-22T10:04:32.925Z"
+      "checkedAt": "2026-10-22T10:04:54.842Z"
     }
   ]
 }
