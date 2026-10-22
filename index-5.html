@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101827">
-<title>STG Command Centre</title>
-<meta name="description" content="A personal workspace for tasks, YouTube Shorts metrics, project links and deployment checks.">
+<title>STG Command Centre · ZesaTracker</title>
+<meta name="description" content="A focused workspace for ZesaTracker tasks, live service checks and deployment status.">
 <meta name="application-name" content="STG Command Centre">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,168 +39,150 @@
 <body>
 <div class="wrap" id="home">
 <header class="top">
- <div class="brand"><div class="logo">STG</div><div><div class="eyebrow">Personal operations</div><h1>Command Centre</h1><div class="date" id="today"></div></div></div>
- <div class="pill">MOBILE WORKSPACE · LOCAL DATA</div>
+ <div class="brand"><div class="logo">STG</div><div><div class="eyebrow">ZesaTracker operations</div><h1>Command Centre</h1><div class="date" id="today"></div></div></div>
+ <div class="pill">ZESATRACKER · MOBILE WORKSPACE</div>
 </header>
 <section class="hero">
- <div><h2>Build. Publish. Grow.</h2><p>Your quick view for content, websites and next actions. Keep the important work moving without jumping between tabs.</p></div>
+ <div><h2>Build. Publish. Grow.</h2><p>Your focused workspace for checking ZesaTracker, tracking fixes and verifying deployments.</p></div>
  <div class="actions"><button class="btn" id="installButton" type="button" hidden onclick="installApp()">Install app</button><button class="btn" onclick="exportData()">Export backup</button><button class="btn" onclick="document.getElementById('backupInput').click()">Import backup</button><input id="backupInput" type="file" accept="application/json,.json" hidden onchange="importData(event)"><button class="btn primary" onclick="document.getElementById('taskInput').focus()">+ Add task</button></div>
 </section>
 <div class="grid">
- <section class="card span-12 daily-run" id="dailyRun" aria-label="Daily operating run">
-  <div class="cardhead"><div><h3>Today's operating run</h3><div class="sub">Use this order to turn the dashboard into real work.</div></div><span class="status manual">Verify manually</span></div>
+ <section class="card span-12 daily-run" id="dailyRun" aria-label="ZesaTracker operating run">
+  <div class="cardhead"><div><h3>ZesaTracker operating run</h3><div class="sub">Review the production site and its key journeys in this order.</div></div><span class="status manual">Verify manually</span></div>
   <div class="run-grid">
-   <article class="run-item"><div class="run-top"><span class="run-number">01</span><strong>Confirm this dashboard is published</strong></div><p>Open the public page and check the latest Pages run before relying on a change.</p><div class="run-links"><a href="https://github.com/shepherdgumbo/stg-command-centre-/actions" target="_blank" rel="noopener">View deployment runs ↗</a></div></article>
-   <article class="run-item"><div class="run-top"><span class="run-number">02</span><strong>Test ZesaTracker</strong></div><p>Open the solar planner, check official ZETDC links and test the fault-report journey. Do not treat the site as a live outage feed.</p><div class="run-links"><a href="https://zesatracker-5nf6-seven.vercel.app/" target="_blank" rel="noopener">Open live site ↗</a><a href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener">Open code ↗</a></div></article>
-   <article class="run-item"><div class="run-top"><span class="run-number">03</span><strong>Check ZimMarket</strong></div><p>Inspect the storefront for genuine approved listings and confirm seller approval is still required. Never fill gaps with demo inventory.</p><div class="run-links"><a href="https://zimmarket-d4b35.web.app/" target="_blank" rel="noopener">Open store ↗</a><a href="https://console.firebase.google.com/project/zimmarket-d4b35/overview" target="_blank" rel="noopener">Open Firebase ↗</a></div></article>
-   <article class="run-item"><div class="run-top"><span class="run-number">04</span><strong>Publish and review content</strong></div><p>Check the latest Short, review real comments, respond where needed, then enter the actual figures in the Shorts log below.</p><div class="run-links"><a href="https://studio.youtube.com/" target="_blank" rel="noopener">Open YouTube Studio ↗</a><a href="https://www.youtube.com/@zimmarkert06" target="_blank" rel="noopener">Open channel ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">01</span><strong>Confirm the Command Centre is published</strong></div><p>Check this dashboard and its latest publishing run after changes.</p><div class="run-links"><a href="https://github.com/shepherdgumbo/stg-command-centre-/actions" target="_blank" rel="noopener">View dashboard deploys ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">02</span><strong>Test the ZesaTracker website</strong></div><p>Open the solar planner, AI assistant and official ZETDC resources. Do not present the site as a live outage feed.</p><div class="run-links"><a href="https://zesatracker.vercel.app/" target="_blank" rel="noopener">Open production site ↗</a><a href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener">Open source code ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">03</span><strong>Check service endpoints</strong></div><p>Confirm the health endpoint and community reports API respond, then test report submission with safe test data.</p><div class="run-links"><a href="https://zesatracker.vercel.app/api/health" target="_blank" rel="noopener">Health API ↗</a><a href="https://zesatracker.vercel.app/api/reports" target="_blank" rel="noopener">Reports API ↗</a></div></article>
+   <article class="run-item"><div class="run-top"><span class="run-number">04</span><strong>Review the latest production deployment</strong></div><p>Check the deployment result and smoke checks before treating a release as complete.</p><div class="run-links"><a href="https://vercel.com/stg8/zesatracker" target="_blank" rel="noopener">Open Vercel project ↗</a><a href="https://github.com/shepherdgumbo/zesatracker/actions" target="_blank" rel="noopener">Open test runs ↗</a></div></article>
   </div>
-  <p class="run-note">This runbook opens your real project tools. It does not claim to test them automatically; mark a task complete only after you have checked it.</p>
+  <p class="run-note">Automated checks confirm responses and workflow status; they do not replace testing the app's main features.</p>
  </section>
 
- <section class="card span-3"><div class="cardhead"><h3>Today's focus</h3><span class="status neutral">Tasks</span></div><div class="metric" id="openCount">0</div><div class="sub">open tasks to move forward</div><div class="meter"><span id="taskMeter"></span></div><div class="metricrow"><span id="doneText">0 completed</span><span id="progressText">0%</span></div></section>
- <section class="card span-3"><div class="cardhead"><h3>YouTube Shorts</h3><span class="status manual">Manual stats</span></div><div class="metric" id="viewsMetric">— <small>views</small></div><div class="sub">Latest figures you enter below</div><div class="metricrow" style="margin-top:12px"><span id="likesSummary">Likes: —</span><span id="commentsSummary">Comments: —</span></div></section>
- <section class="card span-3"><div class="cardhead"><h3>ZesaTracker</h3><span class="status neutral">Live link</span></div><div class="metric" style="font-size:21px">Website</div><div class="sub">Solar planner · AI assistant · fault reports</div><a class="smallbtn" href="https://zesatracker-5nf6-seven.vercel.app/" target="_blank" rel="noopener">Open live site ↗</a></section>
- <section class="card span-3"><div class="cardhead"><h3>ZimMarket</h3><span class="status neutral">Live link</span></div><div class="metric" style="font-size:21px">Marketplace</div><div class="sub">Buy and sell in Zimbabwe</div><a class="smallbtn" href="https://zimmarket-d4b35.web.app" target="_blank" rel="noopener">Open live site ↗</a></section>
+ <section class="card span-6"><div class="cardhead"><h3>ZesaTracker tasks</h3><span class="status neutral">Tasks</span></div><div class="metric" id="openCount">0</div><div class="sub">open tasks to keep the service healthy</div><div class="meter"><span id="taskMeter"></span></div><div class="metricrow"><span id="doneText">0 completed</span><span id="progressText">0%</span></div></section>
+ <section class="card span-6"><div class="cardhead"><h3>ZesaTracker production</h3><span class="status neutral">Live link</span></div><div class="metric" style="font-size:21px">Website</div><div class="sub">Solar planner · AI assistant · fault reports</div><a class="smallbtn" href="https://zesatracker.vercel.app/" target="_blank" rel="noopener">Open live site ↗</a></section>
  <section class="card span-7" id="tasks"><div class="cardhead"><div><h3>Outstanding tasks</h3><div class="sub">Saved on this device. Tick tasks off as you finish them.</div></div><button class="smallbtn" onclick="clearCompleted()">Clear completed</button></div>
- <form class="taskform" id="taskForm"><input class="field" id="taskInput" placeholder="Type a task first, then tap Add task" maxlength="180" required><select class="field" id="taskProject" aria-label="Task project"><option>YouTube</option><option>ZesaTracker</option><option>ZimMarket</option><option>General</option></select><button class="btn primary" type="submit">Add task</button></form>
+ <form class="taskform" id="taskForm" novalidate><input class="field" id="taskInput" placeholder="Describe a ZesaTracker task" maxlength="180"><select class="field" id="taskProject" aria-label="Task project"><option>ZesaTracker</option></select><button class="btn primary" type="submit">Add task</button></form>
  <p id="taskFeedback" class="sub" role="status" aria-live="polite">Type a task above to add it to this device.</p>
  <div class="tasklist" id="taskList"></div>
  </section>
- <section class="card span-5" id="shorts"><div class="cardhead"><div><h3>Shorts performance log</h3><div class="sub">Enter a snapshot from YouTube Studio</div></div><span class="status manual">Not connected</span></div>
- <div class="inputrow"><label><span class="inputlabel">Views</span><input class="field" id="viewsInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 1200"></label><label><span class="inputlabel">Likes</span><input class="field" id="likesInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 42"></label><label><span class="inputlabel">Comments</span><input class="field" id="commentsInput" inputmode="numeric" type="number" min="0" step="1" placeholder="e.g. 8"></label><label><span class="inputlabel">Video title</span><input class="field" id="videoInput" maxlength="120" placeholder="Short title"></label></div>
- <button class="btn primary" style="width:100%;margin-top:12px" onclick="saveStats()">Save stats snapshot</button><div class="note">Analytics are not pulled automatically yet. This panel only displays figures you enter; connect an approved YouTube Analytics integration to automate data collection.</div><div id="lastSnapshot" class="sub" style="margin-top:10px"></div>
- </section>
- <section class="card span-6" id="projects"><div class="cardhead"><h3>Project launchpad</h3><span class="status">Quick links</span></div><div class="links">
- <a class="linktile" href="https://studio.youtube.com/" target="_blank" rel="noopener"><span class="linkicon">▶</span><span><strong>YouTube Studio</strong><small>Comments & analytics</small></span></a>
- <a class="linktile" href="https://www.youtube.com/@zimmarkert06" target="_blank" rel="noopener"><span class="linkicon">YT</span><span><strong>ZimMarket channel</strong><small>View published content</small></span></a>
- <a class="linktile" href="https://zesatracker-5nf6-seven.vercel.app/" target="_blank" rel="noopener"><span class="linkicon">⚡</span><span><strong>ZesaTracker live site</strong><small>Solar planner · AI assistant</small></span></a>
- <a class="linktile" href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>ZesaTracker GitHub</strong><small>Code & changes</small></span></a>
- <a class="linktile" href="https://console.firebase.google.com/project/zimmarket-d4b35/overview" target="_blank" rel="noopener"><span class="linkicon">F</span><span><strong>Firebase Console</strong><small>ZimMarket hosting/backend</small></span></a>
- <a class="linktile" href="https://vercel.com/stg8/zesatracker-5nf6" target="_blank" rel="noopener"><span class="linkicon">▲</span><span><strong>Vercel · ZesaTracker</strong><small>Production deployments</small></span></a>
- <a class="linktile" href="https://github.com/shepherdgumbo/stg-command-centre-/actions" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>Command Centre deploys</strong><small>GitHub Pages build status</small></span></a>
+ <section class="card span-6" id="projects"><div class="cardhead"><h3>ZesaTracker launchpad</h3><span class="status">One project</span></div><div class="links">
+ <a class="linktile" href="https://zesatracker.vercel.app/" target="_blank" rel="noopener"><span class="linkicon">⚡</span><span><strong>ZesaTracker production</strong><small>Open the live service</small></span></a>
+ <a class="linktile" href="https://github.com/shepherdgumbo/zesatracker" target="_blank" rel="noopener"><span class="linkicon">GH</span><span><strong>ZesaTracker source</strong><small>Code and project files</small></span></a>
+ <a class="linktile" href="https://vercel.com/stg8/zesatracker" target="_blank" rel="noopener"><span class="linkicon">▲</span><span><strong>Vercel deployments</strong><small>Production status and logs</small></span></a>
+ <a class="linktile" href="https://github.com/shepherdgumbo/zesatracker/actions" target="_blank" rel="noopener"><span class="linkicon">✓</span><span><strong>Smoke tests</strong><small>Automated release checks</small></span></a>
+ <a class="linktile" href="https://zesatracker.vercel.app/api/health" target="_blank" rel="noopener"><span class="linkicon">API</span><span><strong>Health endpoint</strong><small>Verify service response</small></span></a>
+ <a class="linktile" href="https://zesatracker.vercel.app/api/reports" target="_blank" rel="noopener"><span class="linkicon">↗</span><span><strong>Reports endpoint</strong><small>Check report API response</small></span></a>
  </div></section>
  <section class="card span-6" id="checklist"><div class="cardhead"><h3>Post-deployment check</h3><span class="status neutral">Checklist</span></div><div class="sub" style="margin-bottom:12px">Use after every code change or deployment.</div><div class="tasklist" id="checks">
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Open the live website on mobile</span><span class="tag">Responsive layout and loading</span></span></label>
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Test navigation, buttons and forms</span><span class="tag">Main user journeys</span></span></label>
  <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Check changed features and existing features</span><span class="tag">Avoid regressions</span></span></label>
- <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Review build/deploy result and errors</span><span class="tag">GitHub Pages, Vercel or Firebase</span></span></label>
- <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Confirm no demo or invented live data</span><span class="tag">Especially listings and electricity outages</span></span></label>
+ <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Review build/deploy result and errors</span><span class="tag">Vercel deployment and GitHub Actions checks</span></span></label>
+ <label class="task"><input type="checkbox"><span class="taskbody"><span class="taskname">Confirm no demo or invented live data</span><span class="tag">Never invent live outages or fault reports</span></span></label>
  </div><button class="smallbtn" onclick="resetChecks()">Reset checklist</button></section>
- <section class="card span-12"><div class="cardhead"><h3>Automation status</h3><span class="status manual">Setup needed</span></div><div class="grid">
- <div class="span-4"><strong>YouTube data sync</strong><div class="sub">Manual entry is available. Automatic daily analytics require a connected integration and authorization.</div></div>
- <div class="span-4"><strong>Deployment alerts</strong><div class="sub">GitHub Pages builds run automatically when this repository changes. Open Command Centre deploys for build results; use Vercel for ZesaTracker and Firebase Console for ZimMarket. Background monitoring and automatic alerts are not enabled in this dashboard.</div></div>
- <div class="span-4"><strong>Email and comment alerts</strong><div class="sub">Configure alerts in the source apps first. No inbox, comments or messages are read by this dashboard.</div></div>
+ <section class="card span-12"><div class="cardhead"><h3>ZesaTracker monitoring</h3><span class="status manual">Automatic checks</span></div><div class="grid">
+ <div class="span-4"><strong>Website and API health</strong><div class="sub">The sync job checks the production site plus configured health and reports endpoints twice daily.</div></div>
+ <div class="span-4"><strong>Deployment status</strong><div class="sub">The dashboard can show GitHub workflow status when read access to the private ZesaTracker repository is configured. Vercel remains the source for production deployment state.</div></div>
+ <div class="span-4"><strong>Feature verification</strong><div class="sub">Manually test the solar planner, AI assistant, official utility links and report submission after releases. HTTP success alone does not confirm every feature works.</div></div>
  </div></section>
 </div>
-<div class="foot">STG Command Centre · Tasks, checklist and manual metrics stay in this browser on this device. Export a backup before clearing browser data.</div>
+<div class="foot">STG Command Centre · ZesaTracker tasks and checklist stay in this browser on this device. Export a backup before clearing browser data.</div>
 </div>
-<nav class="bottomnav"><a href="#home"><span>⌂</span>Home</a><a href="#tasks"><span>☑</span>Tasks</a><a href="#shorts"><span>▶</span>Shorts</a><a href="#projects"><span>↗</span>Projects</a><a href="#checklist"><span>✓</span>Checks</a></nav>
+<nav class="bottomnav"><a href="#home"><span>⌂</span>Home</a><a href="#tasks"><span>☑</span>Tasks</a><a href="#projects"><span>⚡</span>ZesaTracker</a><a href="#checklist"><span>✓</span>Checks</a></nav>
 <script>
-const KEY='stg-command-centre-v1';
+const KEY='stg-command-centre-zesa-v1';
+const OLD_KEY='stg-command-centre-v1';
+const CHECK_KEY='stg-command-centre-zesa-checks-v1';
 const defaults=[
- {text:'Review latest YouTube comments and reply to questions',project:'YouTube',done:false},
- {text:'Plan and prepare the next YouTube Short',project:'YouTube',done:false},
- {text:'Check ZesaTracker solar planner and mobile experience',project:'ZesaTracker',done:false},
- {text:'Verify ZesaTracker live deployment and key links',project:'ZesaTracker',done:false},
- {text:'Check ZimMarket listings, approval flow and live site',project:'ZimMarket',done:false},
- {text:'Confirm ZimMarket contains no demo products',project:'ZimMarket',done:false}
+ {text:'Test ZesaTracker on mobile',project:'ZesaTracker',done:false},
+ {text:'Verify the health and reports API endpoints',project:'ZesaTracker',done:false},
+ {text:'Review the latest production deployment and smoke tests',project:'ZesaTracker',done:false}
 ];
-let data={tasks:defaults,stats:null};
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&Array.isArray(saved.tasks))data={...data,...saved}}catch(e){}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert('Could not save locally. Please export a backup or free browser storage.')}renderTasks();renderStats()}
-function renderTasks(){const list=document.getElementById('taskList');list.innerHTML='';data.tasks.forEach((t,i)=>{const row=document.createElement('div');row.className='task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;cb.setAttribute('aria-label','Mark task complete');cb.onchange=()=>{data.tasks[i].done=cb.checked;persist()};const body=document.createElement('div');body.className='taskbody';const name=document.createElement('div');name.className='taskname';name.textContent=t.text;const tag=document.createElement('span');tag.className='tag';tag.textContent=t.project;body.append(name,tag);const del=document.createElement('button');del.className='delete';del.textContent='×';del.title='Delete task';del.setAttribute('aria-label','Delete task');del.onclick=()=>{data.tasks.splice(i,1);persist()};row.append(cb,body,del);list.append(row)});if(!data.tasks.length)list.innerHTML='<div class="empty">All clear. Add your next task above.</div>';const done=data.tasks.filter(t=>t.done).length,open=data.tasks.length-done;document.getElementById('openCount').textContent=open;document.getElementById('doneText').textContent=done+' completed';const p=data.tasks.length?Math.round(done/data.tasks.length*100):0;document.getElementById('progressText').textContent=p+'%';document.getElementById('taskMeter').style.width=p+'%'}
-document.getElementById('taskForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('taskInput'),feedback=document.getElementById('taskFeedback'),text=input.value.trim();if(!text){feedback.textContent='Please type a task before tapping Add task.';input.focus();return;}data.tasks.unshift({text,project:document.getElementById('taskProject').value,done:false});input.value='';persist();feedback.textContent='Task added and saved on this device.';input.focus();});
-function clearCompleted(){data.tasks=data.tasks.filter(t=>!t.done);persist()}
-function saveStats(){
- const count=id=>{
-  const raw=document.getElementById(id).value;
-  if(raw==='')return null;
-  const value=Number(raw);
-  if(!Number.isSafeInteger(value)||value<0)throw new Error('Enter a whole number of zero or more for views, likes and comments.');
-  return value;
- };
- try{
-  data.stats={views:count('viewsInput'),likes:count('likesInput'),comments:count('commentsInput'),title:document.getElementById('videoInput').value.trim().slice(0,120),savedAt:new Date().toISOString()};
-  persist();
- }catch(error){alert(error.message||'Please check the statistics and try again.')}
-}
-function renderStats(){
- const s=data.stats;
- const metric=document.getElementById('viewsMetric');
- const countText=value=>typeof value==='number'&&Number.isSafeInteger(value)&&value>=0?value.toLocaleString():'—';
- const unit=document.createElement('small');unit.textContent='views';
- metric.replaceChildren(document.createTextNode(s?countText(s.views)+' ':'— '),unit);
- if(!s){
-  document.getElementById('likesSummary').textContent='Likes: —';
-  document.getElementById('commentsSummary').textContent='Comments: —';
-  document.getElementById('lastSnapshot').textContent='No snapshot saved yet.';
-  return;
+let data={tasks:defaults};
+try{
+ const current=localStorage.getItem(KEY);
+ const source=current||localStorage.getItem(OLD_KEY);
+ const saved=JSON.parse(source||'null');
+ if(saved&&Array.isArray(saved.tasks)){
+  const migrated=saved.tasks.filter(t=>t&&typeof t.text==='string'&&t.project==='ZesaTracker').map(t=>({text:t.text.slice(0,180),project:'ZesaTracker',done:!!t.done}));
+  data.tasks=current?migrated:(migrated.length?migrated:defaults);
  }
- document.getElementById('likesSummary').textContent='Likes: '+countText(s.likes);
- document.getElementById('commentsSummary').textContent='Comments: '+countText(s.comments);
- const date=s.savedAt?new Date(s.savedAt):null;
- const savedLabel=date&&Number.isFinite(date.getTime())?date.toLocaleString():'Unknown time';
- const title=typeof s.title==='string'?s.title.slice(0,120):'';
- document.getElementById('lastSnapshot').textContent='Last saved: '+savedLabel+(title?' · '+title:'');
+}catch(error){console.warn('Could not restore saved tasks.',error)}
+function persist(){
+ try{localStorage.setItem(KEY,JSON.stringify(data));renderTasks();return true}
+ catch(error){console.warn('Could not save tasks locally.',error);renderTasks();return false}
 }
-const CHECK_KEY='stg-command-centre-checks-v1';
-function loadChecks(){try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');document.querySelectorAll('#checks input[type=checkbox]').forEach((c,i)=>{c.checked=!!saved[i]})}catch(e){}}
-function saveChecks(){try{localStorage.setItem(CHECK_KEY,JSON.stringify([...document.querySelectorAll('#checks input[type=checkbox]')].map(c=>c.checked)))}catch(e){}}
-document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.addEventListener('change',saveChecks));
-function resetChecks(){document.querySelectorAll('#checks input[type=checkbox]').forEach(c=>c.checked=false);saveChecks()}
+function renderTasks(){
+ const list=document.getElementById('taskList');if(!list)return;list.replaceChildren();
+ data.tasks.forEach((task,index)=>{
+  const row=document.createElement('div');row.className='task'+(task.done?' done':'');
+  const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=!!task.done;checkbox.setAttribute('aria-label','Mark task complete');
+  checkbox.addEventListener('change',()=>{data.tasks[index].done=checkbox.checked;persist()});
+  const body=document.createElement('div');body.className='taskbody';
+  const title=document.createElement('div');title.className='taskname';title.textContent=task.text;
+  const tag=document.createElement('span');tag.className='tag';tag.textContent='ZesaTracker';body.append(title,tag);
+  const remove=document.createElement('button');remove.className='delete';remove.type='button';remove.textContent='×';remove.title='Delete task';remove.setAttribute('aria-label','Delete task');
+  remove.addEventListener('click',()=>{data.tasks.splice(index,1);persist();updateFeedback('Task removed.')});
+  row.append(checkbox,body,remove);list.append(row);
+ });
+ if(!data.tasks.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No open tasks. Add a ZesaTracker task above.';list.append(empty)}
+ const done=data.tasks.filter(t=>t.done).length,open=data.tasks.length-done;
+ document.getElementById('openCount').textContent=String(open);
+ document.getElementById('doneText').textContent=done+' completed';
+ const progress=data.tasks.length?Math.round(done/data.tasks.length*100):0;
+ document.getElementById('progressText').textContent=progress+'%';
+ document.getElementById('taskMeter').style.width=progress+'%';
+}
+function updateFeedback(message){const node=document.getElementById('taskFeedback');if(node)node.textContent=message}
+document.getElementById('taskForm').addEventListener('submit',event=>{
+ event.preventDefault();
+ const input=document.getElementById('taskInput'),text=input.value.trim();
+ if(!text){updateFeedback('Please describe a ZesaTracker task first.');input.focus();return;}
+ data.tasks.unshift({text:text.slice(0,180),project:'ZesaTracker',done:false});
+ input.value='';
+ const saved=persist();
+ updateFeedback(saved?'ZesaTracker task added and saved on this device.':'Task added for this session, but browser storage is blocked. Export a backup before closing this page.');
+ input.focus();
+});
+function clearCompleted(){data.tasks=data.tasks.filter(t=>!t.done);const saved=persist();updateFeedback(saved?'Completed tasks cleared.':'Completed tasks cleared for this session only.')}
+function loadChecks(){try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');document.querySelectorAll('#checks input[type=checkbox]').forEach((box,index)=>{box.checked=!!saved[index]})}catch(error){}}
+function saveChecks(){try{localStorage.setItem(CHECK_KEY,JSON.stringify([...document.querySelectorAll('#checks input[type=checkbox]')].map(box=>box.checked)))}catch(error){console.warn('Could not save checklist locally.',error)}}
+document.querySelectorAll('#checks input[type=checkbox]').forEach(box=>box.addEventListener('change',saveChecks));
+function resetChecks(){document.querySelectorAll('#checks input[type=checkbox]').forEach(box=>box.checked=false);saveChecks()}
+function exportData(){
+ const backup={tasks:data.tasks,checks:[...document.querySelectorAll('#checks input[type=checkbox]')].map(box=>box.checked),exportedAt:new Date().toISOString(),app:'STG Command Centre - ZesaTracker'};
+ const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='stg-command-centre-zesatracker-backup.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
 function importData(event){
- const input=event.target;const file=input.files&&input.files[0];if(!file)return;
+ const input=event.target,file=input.files&&input.files[0];if(!file)return;
  const reader=new FileReader();
- reader.onload=()=>{try{
-  const incoming=JSON.parse(String(reader.result||''));
-  if(!incoming||!Array.isArray(incoming.tasks))throw new Error('This is not a valid STG Command Centre backup.');
-  if(!confirm('Restore this backup? It will replace the tasks and Shorts snapshot saved on this device.'))return;
-  const rawStats=incoming.stats&&typeof incoming.stats==='object'&&!Array.isArray(incoming.stats)?incoming.stats:null;
-  const safeCount=value=>typeof value==='number'&&Number.isSafeInteger(value)&&value>=0?value:null;
-  data={tasks:incoming.tasks.filter(t=>t&&typeof t.text==='string').map(t=>({text:t.text.slice(0,180),project:typeof t.project==='string'?t.project.slice(0,40):'General',done:!!t.done})),stats:rawStats?{views:safeCount(rawStats.views),likes:safeCount(rawStats.likes),comments:safeCount(rawStats.comments),title:typeof rawStats.title==='string'?rawStats.title.slice(0,120):'',savedAt:typeof rawStats.savedAt==='string'&&Number.isFinite(Date.parse(rawStats.savedAt))?new Date(rawStats.savedAt).toISOString():new Date().toISOString()}:null};
-  if(Array.isArray(incoming.checks)){try{localStorage.setItem(CHECK_KEY,JSON.stringify(incoming.checks.map(Boolean)))}catch(e){}}
-  persist();loadChecks();alert('Backup restored on this device.');
- }catch(err){alert(err.message||'Could not read this backup file.');}finally{input.value='';}};
- reader.onerror=()=>{alert('Unable to read the selected file.');input.value='';};
+ reader.onload=()=>{
+  try{
+   const incoming=JSON.parse(String(reader.result||''));
+   if(!incoming||!Array.isArray(incoming.tasks))throw new Error('This is not a valid Command Centre task backup.');
+   if(!confirm('Restore this backup? It will replace the ZesaTracker tasks and checklist saved on this device.'))return;
+   data.tasks=incoming.tasks.filter(t=>t&&typeof t.text==='string'&&t.project==='ZesaTracker').map(t=>({text:t.text.slice(0,180),project:'ZesaTracker',done:!!t.done}));
+   if(Array.isArray(incoming.checks))localStorage.setItem(CHECK_KEY,JSON.stringify(incoming.checks.map(Boolean)));
+   const saved=persist();loadChecks();updateFeedback(saved?'ZesaTracker backup restored.':'Backup restored for this session; browser storage is blocked.');
+  }catch(error){alert(error.message||'Could not read this backup file.')}
+  finally{input.value=''}
+ };
+ reader.onerror=()=>{alert('Unable to read the selected file.');input.value=''};
  reader.readAsText(file);
 }
-function exportData(){const backup={...data,checks:[...document.querySelectorAll('#checks input[type=checkbox]')].map(c=>c.checked),exportedAt:new Date().toISOString(),app:'STG Command Centre'};const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='stg-command-centre-backup.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 let deferredInstallPrompt=null;
-window.addEventListener('beforeinstallprompt',event=>{
- event.preventDefault();
- deferredInstallPrompt=event;
- const button=document.getElementById('installButton');
- if(button)button.hidden=false;
-});
-window.addEventListener('appinstalled',()=>{
- deferredInstallPrompt=null;
- const button=document.getElementById('installButton');
- if(button)button.hidden=true;
-});
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredInstallPrompt=event;const button=document.getElementById('installButton');if(button)button.hidden=false});
+window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;const button=document.getElementById('installButton');if(button)button.hidden=true});
 async function installApp(){
- if(!deferredInstallPrompt){
-  alert('To install, open your browser menu and choose Install app or Add to Home screen.');
-  return;
- }
+ if(!deferredInstallPrompt){alert('To install, open your browser menu and choose Install app or Add to Home screen.');return;}
  deferredInstallPrompt.prompt();
- try{
-  const choice=await deferredInstallPrompt.userChoice;
-  if(choice&&choice.outcome==='accepted'){
-   const button=document.getElementById('installButton');
-   if(button)button.hidden=true;
-  }
- }catch(error){}
+ try{const choice=await deferredInstallPrompt.userChoice;if(choice&&choice.outcome==='accepted'){const button=document.getElementById('installButton');if(button)button.hidden=true}}catch(error){}
  deferredInstallPrompt=null;
 }
-if('serviceWorker' in navigator){
- window.addEventListener('load',()=>{
-  navigator.serviceWorker.register('./sw.js').catch(error=>console.warn('Offline mode could not be enabled.',error));
- });
-}
-
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(error=>console.warn('Offline mode could not be enabled.',error)))}
 document.getElementById('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'short',day:'numeric'});
-renderTasks();renderStats();loadChecks();
+renderTasks();loadChecks();
 </script>
 <script src="./sync-panel.js" defer></script>
 </body>

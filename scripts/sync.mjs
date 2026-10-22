@@ -1,11 +1,71 @@
 import fs from "node:fs/promises";
+
 const DATA = new URL("../data/", import.meta.url);
 const cfg = JSON.parse(await fs.readFile(new URL("../command-centre.config.json", import.meta.url), "utf8"));
 const now = new Date().toISOString();
-await fs.mkdir(DATA,{recursive:true});
-async function getJson(url,headers={}){const r=await fetch(url,{headers});const raw=await r.text();let body;try{body=JSON.parse(raw)}catch{body=null}if(!r.ok){const apiError=body?.error;const detail=Array.isArray(apiError?.errors)?apiError.errors.map(x=>[x.reason,x.message].filter(Boolean).join(": ")).filter(Boolean).join("; "):"";throw new Error([r.status,apiError?.message||r.statusText,detail].filter(Boolean).join(" — "))}if(!body)throw new Error("Invalid JSON response from "+new URL(url).hostname);return body;}
-async function checkSite(site){for(let a=1;a<=2;a++){try{const r=await fetch(site.url,{redirect:"follow"});if(r.ok)return {...site,up:true,status:r.status,checkedAt:now};}catch{}}return {...site,up:false,status:null,checkedAt:now};}
-async function githubRepo(repo){const token=process.env.GH_READ_TOKEN||process.env.GITHUB_TOKEN;if(!token)return null;const h={authorization:"Bearer "+token,accept:"application/vnd.github+json"};try{const r=await getJson("https://api.github.com/repos/"+repo,h);const runs=await getJson("https://api.github.com/repos/"+repo+"/actions/runs?per_page=1",h);return {repo,private:r.private,defaultBranch:r.default_branch,latestRun:runs.workflow_runs?.[0]||null,checkedAt:now};}catch(e){return {repo,error:e.message,checkedAt:now};}}
-async function youtube(){const key=process.env.YOUTUBE_API_KEY;if(!key)return {available:false,reason:"YOUTUBE_API_KEY is not configured",updatedAt:now};const y=cfg.youtube;const base="https://www.googleapis.com/youtube/v3/";let channel;if(y.channelId)channel=await getJson(base+"channels?part=snippet,statistics,contentDetails&id="+encodeURIComponent(y.channelId)+"&key="+key);else channel=await getJson(base+"channels?part=snippet,statistics,contentDetails&forHandle="+encodeURIComponent(y.channelHandle)+"&key="+key);const c=channel.items?.[0];if(!c)throw new Error("YouTube channel not found");const pl=c.contentDetails.relatedPlaylists.uploads;const items=await getJson(base+"playlistItems?part=snippet,contentDetails&playlistId="+pl+"&maxResults="+Math.min(50,y.scanCount||30)+"&key="+key);const ids=items.items.map(x=>x.contentDetails.videoId).filter(Boolean);const v=ids.length?await getJson(base+"videos?part=snippet,contentDetails,statistics&id="+ids.join(",")+"&key="+key):{items:[]};const shorts=v.items.filter(x=>{const m=x.contentDetails.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);const sec=(+(m?.[1]||0))*3600+(+(m?.[2]||0))*60+(+(m?.[3]||0));return sec<=(y.shortMaxSeconds||180);});const latest=shorts[0];return {available:true,updatedAt:now,channel:{title:c.snippet.title,handle:y.channelHandle,subscribers:Number(c.statistics.subscriberCount||0),views:Number(c.statistics.viewCount||0),videos:Number(c.statistics.videoCount||0)},latestShort:latest?{id:latest.id,title:latest.snippet.title,publishedAt:latest.snippet.publishedAt,views:Number(latest.statistics.viewCount||0),likes:Number(latest.statistics.likeCount||0),comments:Number(latest.statistics.commentCount||0)}:null};}
-const sites=await Promise.all(cfg.sites.map(checkSite));const repos=await Promise.all((cfg.repos||[]).filter(x=>x.repo&&!x.repo.includes("OWNER/REPO")&&!x.repo.includes("REPLACE-ME")).map(x=>githubRepo(x.repo)));let yt;try{yt=await youtube();}catch(e){let reason=e.message||"YouTube API request failed";if(reason.includes("403")&&(reason.includes("blocked")||reason.includes("forbidden")||reason.includes("Requests to this API youtube method")))reason="Google Cloud is blocking YouTube Data API v3 for this key. Allow YouTube Data API v3 under API restrictions for the STG YouTube key.";yt={available:false,reason,updatedAt:now};}const tasks=[];for(const s of sites)if(!s.up)tasks.push({id:"site-down-"+s.id,tag:"Site",title:s.name+" is down — check it"});for(const r of repos){if(r?.latestRun?.conclusion==="failure")tasks.push({id:"build-failed-"+r.repo,tag:"Build",title:"Latest GitHub Actions run failed for "+r.repo});if(r?.error&&r.repo!=="shepherdgumbo/stg-command-centre-")tasks.push({id:"repo-access-"+r.repo,tag:"GitHub",title:"Grant Command Centre read access to "+r.repo,link:"https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"});}if(yt?.available&&yt.latestShort){const age=(Date.now()-Date.parse(yt.latestShort.publishedAt))/86400000;if(age>(cfg.youtube.staleAfterDays||3))tasks.push({id:"youtube-stale",tag:"YouTube",title:"No recent Short in the last few days",link:"https://studio.youtube.com/"});}else if(!yt?.available){tasks.push({id:"youtube-sync-error",tag:"YouTube",title:"Fix YouTube sync: "+(yt?.reason||"API connection unavailable"),link:"https://console.cloud.google.com/apis/credentials"});}
-await fs.writeFile(new URL("status.json",DATA),JSON.stringify({updatedAt:now,sites,repos},null,2));await fs.writeFile(new URL("youtube.json",DATA),JSON.stringify(yt,null,2));await fs.writeFile(new URL("auto-tasks.json",DATA),JSON.stringify({updatedAt:now,tasks},null,2));
+await fs.mkdir(DATA, { recursive: true });
+
+async function getJson(url, headers = {}) {
+  const response = await fetch(url, { headers });
+  const raw = await response.text();
+  let body;
+  try { body = JSON.parse(raw); } catch { body = null; }
+  if (!response.ok) throw new Error(response.status + " — " + (body?.message || response.statusText));
+  if (!body) throw new Error("Invalid JSON response from " + new URL(url).hostname);
+  return body;
+}
+
+async function checkUrl(url) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(10000) });
+      return { url, up: response.ok, status: response.status, checkedAt: now };
+    } catch (error) {
+      if (attempt === 2) return { url, up: false, status: null, checkedAt: now, error: error.message };
+    }
+  }
+  return { url, up: false, status: null, checkedAt: now };
+}
+
+async function checkSite(site) {
+  const primary = await checkUrl(site.url);
+  const endpoints = await Promise.all((site.checks || []).map(check => checkUrl(check.url)));
+  return { id: site.id, name: site.name, url: site.url, up: primary.up, status: primary.status, checkedAt: now, endpoints };
+}
+
+async function githubRepo(repo) {
+  const token = process.env.GH_READ_TOKEN || process.env.GITHUB_TOKEN;
+  if (!token) return { repo: repo.repo, name: repo.name, error: "GH_READ_TOKEN is not configured", checkedAt: now };
+  const headers = { authorization: "Bearer " + token, accept: "application/vnd.github+json" };
+  try {
+    const metadata = await getJson("https://api.github.com/repos/" + repo.repo, headers);
+    const runs = await getJson("https://api.github.com/repos/" + repo.repo + "/actions/runs?per_page=1", headers);
+    return {
+      repo: repo.repo,
+      name: repo.name,
+      private: metadata.private,
+      defaultBranch: metadata.default_branch,
+      latestRun: runs.workflow_runs?.[0] || null,
+      checkedAt: now
+    };
+  } catch (error) {
+    return { repo: repo.repo, name: repo.name, error: error.message, checkedAt: now };
+  }
+}
+
+const sites = await Promise.all(cfg.sites.map(checkSite));
+const repos = await Promise.all((cfg.repos || []).map(githubRepo));
+const tasks = [];
+for (const site of sites) {
+  if (!site.up) tasks.push({ id: "site-down-" + site.id, tag: "Site", title: site.name + " website is not responding", link: site.url });
+  for (const endpoint of site.endpoints || []) {
+    if (!endpoint.up) tasks.push({ id: "endpoint-down-" + site.id + "-" + endpoint.url.split("/").pop(), tag: "API", title: site.name + " " + endpoint.url.split("/").pop() + " endpoint is not responding", link: endpoint.url });
+  }
+}
+for (const item of repos) {
+  if (item?.latestRun?.conclusion === "failure") tasks.push({ id: "build-failed-" + item.repo, tag: "Build", title: "Latest workflow run failed for " + item.repo, link: "https://github.com/" + item.repo + "/actions" });
+  if (item?.error) tasks.push({ id: "repo-access-" + item.repo, tag: "GitHub", title: "Enable read access to the private ZesaTracker repository", link: "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions" });
+}
+
+await fs.writeFile(new URL("status.json", DATA), JSON.stringify({ updatedAt: now, sites, repos }, null, 2) + "\n");
+await fs.writeFile(new URL("auto-tasks.json", DATA), JSON.stringify({ updatedAt: now, tasks }, null, 2) + "\n");

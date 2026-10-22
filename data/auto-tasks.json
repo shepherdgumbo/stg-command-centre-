@@ -1,17 +1,11 @@
 {
-  "updatedAt": "2026-10-22T10:07:44.320Z",
+  "updatedAt": "2026-10-22T10:29:09.021Z",
   "tasks": [
     {
       "id": "repo-access-shepherdgumbo/zesatracker",
       "tag": "GitHub",
-      "title": "Grant Command Centre read access to shepherdgumbo/zesatracker",
+      "title": "Enable read-only access to the private ZesaTracker repository to show workflow status",
       "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
-    },
-    {
-      "id": "youtube-sync-error",
-      "tag": "YouTube",
-      "title": "Fix YouTube sync: Google Cloud is blocking YouTube Data API v3 for this key. Allow YouTube Data API v3 under API restrictions for the STG YouTube key.",
-      "link": "https://console.cloud.google.com/apis/credentials"
     }
   ]
 }

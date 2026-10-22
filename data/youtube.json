@@ -1,5 +1,0 @@
-{
-  "available": false,
-  "reason": "Google Cloud is blocking YouTube Data API v3 for this key. Allow YouTube Data API v3 under API restrictions for the STG YouTube key.",
-  "updatedAt": "2026-10-22T10:07:44.320Z"
-}

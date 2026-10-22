@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "STG Command Centre",
-  "short_name": "STG Centre",
-  "description": "A personal workspace for tasks, YouTube Shorts metrics, project links and deployment checks.",
+  "name": "STG Command Centre — ZesaTracker",
+  "short_name": "STG Zesa",
+  "description": "A focused workspace for ZesaTracker tasks, health checks and deployments.",
   "lang": "en",
   "start_url": "./",
   "scope": "./",
@@ -10,7 +10,10 @@
   "orientation": "portrait-primary",
   "background_color": "#0b1120",
   "theme_color": "#101827",
-  "categories": ["productivity", "utilities"],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "./icon.svg",

@@ -1,31 +1,24 @@
 {
-  "youtube": {
-    "channelHandle": "@zimmarkert06",
-    "channelId": "",
-    "shortMaxSeconds": 180,
-    "scanCount": 30,
-    "recentCount": 10,
-    "staleAfterDays": 3,
-    "commentWindowDays": 14
-  },
   "sites": [
     {
       "id": "zesatracker",
       "name": "ZesaTracker",
-      "url": "https://zesatracker.vercel.app/"
-    },
-    {
-      "id": "zimmarket",
-      "name": "ZimMarket",
-      "url": "https://zimmarket-d4b35.web.app/"
+      "url": "https://zesatracker.vercel.app/",
+      "checks": [
+        {
+          "id": "health",
+          "name": "Health API",
+          "url": "https://zesatracker.vercel.app/api/health"
+        },
+        {
+          "id": "reports",
+          "name": "Reports API",
+          "url": "https://zesatracker.vercel.app/api/reports"
+        }
+      ]
     }
   ],
   "repos": [
-    {
-      "id": "command-centre",
-      "name": "Command Centre",
-      "repo": "shepherdgumbo/stg-command-centre-"
-    },
     {
       "id": "zesatracker",
       "name": "ZesaTracker",

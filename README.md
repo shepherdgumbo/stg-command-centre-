@@ -1,41 +1,39 @@
-# STG Command Centre
+# STG Command Centre — ZesaTracker
 
-A mobile-friendly personal operations dashboard for tasks, synchronized project health, YouTube Shorts checks, launch links, and deployment checks.
+A mobile-friendly dashboard focused on one project: ZesaTracker.
 
 **Live site:** https://shepherdgumbo.github.io/stg-command-centre-/
 
 ## Features
 
-- Add, complete, categorize, and delete tasks.
-- Follow a daily operating runbook with direct links to real project sites, source code, and deployment history.
-- Track a manual YouTube Shorts snapshot (views, likes, comments, and title).
-- Export and import a JSON backup, including task and checklist state.
-- Persist the deployment checklist on the current browser profile.
+- ZesaTracker production link, GitHub source and Vercel deployment links.
+- Automatic checks for the public website, health API and reports API.
+- ZesaTracker repository workflow status when a read-only GitHub token is configured.
+- Add, complete, categorize and delete ZesaTracker tasks.
+- Post-deployment checklist for mobile layout, key flows and release checks.
+- Export and import a JSON backup of tasks and checklist state.
 - Install as a web app where the browser supports installation.
-- Open the dashboard shell offline after the first successful online load, provided the service worker has been installed.
-- Quick links to the ZesaTracker live site and Vercel project, ZimMarket Firebase Console, YouTube Studio, and deployment history.
+- Offline app shell after the first successful online load and service-worker install.
 
 ## Publish
 
-The repository is a static site. GitHub Pages publishes the root directory on updates to `main`. The Pages build and deployment history is available at:
+This is a static site. GitHub Pages publishes the repository root from `main` when files change. Deployment runs are available at:
 
 https://github.com/shepherdgumbo/stg-command-centre-/actions
 
-The repository also includes a `netlify.toml` for static hosting providers that use Netlify configuration.
+## Automation and access
 
-## Data and privacy
+The sync workflow runs twice daily and can also be started manually. It checks ZesaTracker website/API responses and retrieves repository workflow status when the `GH_READ_TOKEN` Actions secret is configured. Use a fine-grained token with read-only access to the ZesaTracker repository and Actions metadata. Never add credentials to HTML or browser storage.
 
-Tasks, manual stats, and checklist state are stored in `localStorage` in the browser on this device/profile. They are not synchronized to a server or shared automatically between devices. Use **Export backup** before clearing browser data or changing devices.
-
-The dashboard does not sign into YouTube, read inboxes or comments, monitor deployments in the background, or receive automatic analytics. Those features require separate provider authorization or notification setup. Labels are intentionally honest about these limits.
+The dashboard task list and checklist are stored in this browser on this device/profile; they are not synced between devices. Export a backup before clearing browser data or changing devices. HTTP success indicates a route responded; manually test the solar planner, AI assistant and report flow after each release.
 
 ## Files
 
-- `index.html` — main dashboard
-- `index-5.html` — synchronized alternate entry page
-- `manifest.webmanifest` — web-app installation metadata
-- `sw.js` — conservative network-first app-shell cache and offline fallback
-- `icon.svg` — STG app icon
-- `netlify.toml` — static publish directory configuration
+- `index.html` and `index-5.html` — dashboard
+- `command-centre.config.json` — ZesaTracker URLs and monitored endpoints
+- `scripts/sync.mjs` — scheduled site and repository checks
+- `sync-panel.js` — live status panel
+- `data/status.json` and `data/auto-tasks.json` — sync output
+- `manifest.webmanifest` and `sw.js` — installable offline shell
 
-The page has no build-time package dependencies.
+There are no build-time package dependencies.
