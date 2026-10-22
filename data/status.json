@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T21:26:59.791Z",
+  "updatedAt": "2026-10-22T10:04:32.925Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,7 +7,7 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-21T21:26:59.791Z"
+      "checkedAt": "2026-10-22T10:04:32.925Z"
     },
     {
       "id": "zimmarket",
@@ -15,7 +15,7 @@
       "url": "https://zimmarket-d4b35.web.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-21T21:26:59.791Z"
+      "checkedAt": "2026-10-22T10:04:32.925Z"
     }
   ],
   "repos": [
@@ -24,25 +24,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 39678856546,
-        "name": "Command Centre sync",
-        "node_id": "WFR_kwLOVCqtYs8AAAAJPQtNYg",
+        "id": 39760315500,
+        "name": "pages build and deployment",
+        "node_id": "WFR_kwLOVCqtYs8AAAAJQeZEbA",
         "head_branch": "main",
-        "head_sha": "8c1db2f2a1912ab2b1f6a8bbdef194b1d9715764",
-        "path": ".github/workflows/command-centre-sync.yml",
-        "display_title": "Command Centre sync",
-        "run_number": 16,
-        "event": "schedule",
+        "head_sha": "47474a739b6eea7aa36b0f2e7615a540310c013f",
+        "path": "dynamic/pages/pages-build-deployment",
+        "display_title": "pages build and deployment",
+        "run_number": 64,
+        "event": "dynamic",
         "status": "in_progress",
         "conclusion": null,
-        "workflow_id": 386788891,
-        "check_suite_id": 107536282136,
-        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAZCalyGA",
-        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546",
-        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39678856546",
+        "workflow_id": 380495011,
+        "check_suite_id": 107755392834,
+        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAZFrjPQg",
+        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500",
+        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/39760315500",
         "pull_requests": [],
-        "created_at": "2026-10-21T21:26:51Z",
-        "updated_at": "2026-10-21T21:26:54Z",
+        "created_at": "2026-10-22T10:04:24Z",
+        "updated_at": "2026-10-22T10:04:29Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -66,7 +66,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-10-21T21:26:51Z",
+        "run_started_at": "2026-10-22T10:04:24Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -88,26 +88,26 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/107536282136",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39678856546/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/107755392834",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/39760315500/rerun",
         "previous_attempt_url": null,
-        "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/386788891",
+        "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/380495011",
         "head_commit": {
-          "id": "8c1db2f2a1912ab2b1f6a8bbdef194b1d9715764",
-          "tree_id": "30cf7b7e6d52cfe6b0548dfed8e91ccef5f9b7be",
-          "message": "chore: update command centre sync data",
-          "timestamp": "2026-10-21T11:17:31Z",
+          "id": "47474a739b6eea7aa36b0f2e7615a540310c013f",
+          "tree_id": "59bdb86fc262ecb673892454736adf2d7006f450",
+          "message": "fix: report private repo and YouTube API sync blockers clearly",
+          "timestamp": "2026-10-22T10:04:21Z",
           "author": {
-            "name": "github-actions[bot]",
-            "email": "41898282+github-actions[bot]@users.noreply.github.com"
+            "name": "shepherdgumbo",
+            "email": "shepherdgumbo06@gmail.com"
           },
           "committer": {
-            "name": "github-actions[bot]",
-            "email": "41898282+github-actions[bot]@users.noreply.github.com"
+            "name": "shepherdgumbo",
+            "email": "shepherdgumbo06@gmail.com"
           }
         },
         "repository": {
@@ -247,12 +247,12 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/deployments"
         }
       },
-      "checkedAt": "2026-10-21T21:26:59.791Z"
+      "checkedAt": "2026-10-22T10:04:32.925Z"
     },
     {
       "repo": "shepherdgumbo/zesatracker",
       "error": "404 — Not Found",
-      "checkedAt": "2026-10-21T21:26:59.791Z"
+      "checkedAt": "2026-10-22T10:04:32.925Z"
     }
   ]
 }

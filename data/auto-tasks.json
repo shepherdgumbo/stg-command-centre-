@@ -1,11 +1,17 @@
 {
-  "updatedAt": "2026-10-21T21:26:59.791Z",
+  "updatedAt": "2026-10-22T10:04:32.925Z",
   "tasks": [
+    {
+      "id": "repo-access-shepherdgumbo/zesatracker",
+      "tag": "GitHub",
+      "title": "Grant Command Centre read access to shepherdgumbo/zesatracker",
+      "link": "https://github.com/shepherdgumbo/zesatracker/settings/secrets/actions"
+    },
     {
       "id": "youtube-sync-error",
       "tag": "YouTube",
       "title": "Fix YouTube sync: 403 — Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked. — forbidden: Requests to this API youtube method youtube.api.v3.V3DataChannelService.List are blocked.",
-      "link": "https://console.cloud.google.com/apis/library/youtube.googleapis.com"
+      "link": "https://console.cloud.google.com/apis/credentials"
     }
   ]
 }
