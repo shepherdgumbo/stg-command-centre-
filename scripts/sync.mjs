@@ -34,8 +34,8 @@ async function checkSite(site) {
 }
 
 async function githubRepo(repo) {
-  const token = process.env.GH_READ_TOKEN || process.env.GITHUB_TOKEN;
-  if (!token) return { repo: repo.repo, name: repo.name, error: "GH_READ_TOKEN is not configured", checkedAt: now };
+  const token = process.env.GH_READ_TOKEN;
+  if (!token) return { repo: repo.repo, name: repo.name, error: "GH_READ_TOKEN is missing; private repository checks need read access to " + repo.repo, checkedAt: now };
   const headers = { authorization: "Bearer " + token, accept: "application/vnd.github+json" };
   try {
     const metadata = await getJson("https://api.github.com/repos/" + repo.repo, headers);
@@ -49,7 +49,7 @@ async function githubRepo(repo) {
       checkedAt: now
     };
   } catch (error) {
-    return { repo: repo.repo, name: repo.name, error: error.message, checkedAt: now };
+    return { repo: repo.repo, name: repo.name, error: "GitHub read access failed: " + error.message + ". Check GH_READ_TOKEN access to " + repo.repo, checkedAt: now };
   }
 }
 
