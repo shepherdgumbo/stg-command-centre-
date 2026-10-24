@@ -44,7 +44,7 @@
 </header>
 <section class="hero">
  <div><h2>Build. Publish. Grow.</h2><p>Your focused workspace for checking ZesaTracker, tracking fixes and verifying deployments.</p></div>
- <div class="actions"><button class="btn" id="installButton" type="button" hidden onclick="installApp()">Install app</button><button class="btn" onclick="exportData()">Export backup</button><button class="btn" onclick="document.getElementById('backupInput').click()">Import backup</button><input id="backupInput" type="file" accept="application/json,.json" hidden onchange="importData(event)"><button class="btn primary" onclick="document.getElementById('taskInput').focus()">+ Add task</button></div>
+ <div class="actions"><button class="btn" id="installButton" type="button" hidden onclick="installApp()">Install app</button><button class="btn" onclick="exportData()">Export backup</button><button class="btn" onclick="document.getElementById('backupInput').click()">Import backup</button><input id="backupInput" type="file" accept="application/json,.json" hidden onchange="importData(event)"><button class="btn primary" onclick="document.getElementById('tasks').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>document.getElementById('taskInput').focus(),250);document.getElementById('taskFeedback').textContent='Type a ZesaTracker task below, then tap Add task to save it.'">+ Add task</button></div>
 </section>
 <div class="grid">
  <section class="card span-12 daily-run" id="dailyRun" aria-label="ZesaTracker operating run">
