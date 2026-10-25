@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T20:29:44.336Z",
+  "updatedAt": "2026-10-25T10:51:57.656Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,19 +7,19 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-10-24T20:29:44.336Z",
+      "checkedAt": "2026-10-25T10:51:57.656Z",
       "endpoints": [
         {
           "url": "https://zesatracker.vercel.app/api/health",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-10-24T20:29:44.336Z"
+          "checkedAt": "2026-10-25T10:51:57.656Z"
         },
         {
           "url": "https://zesatracker.vercel.app/api/reports",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-10-24T20:29:44.336Z"
+          "checkedAt": "2026-10-25T10:51:57.656Z"
         }
       ]
     }
@@ -29,7 +29,7 @@
       "repo": "shepherdgumbo/zesatracker",
       "name": "ZesaTracker",
       "error": "GH_READ_TOKEN is missing; private repository checks need read access to shepherdgumbo/zesatracker",
-      "checkedAt": "2026-10-24T20:29:44.336Z"
+      "checkedAt": "2026-10-25T10:51:57.656Z"
     }
   ]
 }
