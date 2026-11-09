@@ -1,4 +1,4 @@
-// STG Command Centre: focused ZesaTracker status panel.
+// STG Command Centre: multi-project status panel.
 (() => {
   "use strict";
   const DONE_KEY = "stg-auto-tasks-done-zesa";
@@ -43,12 +43,12 @@
     root.replaceChildren();
     const newest = [status?.updatedAt, auto?.updatedAt].filter(Boolean).sort().pop();
     root.append(el("div", { class: "ccs-head" },
-      el("div", {}, el("h2", { text: "ZesaTracker live checks" }),
+      el("div", {}, el("h2", { text: "Project health checks" }),
         el("div", { class: "ccs-sub", text: newest ? "Updated " + ago(newest) + " · automatic checks twice daily" : "No check data yet" })),
       el("button", { type: "button", text: "Reload", onclick: () => render(root) })));
     if (!status && !auto) { root.append(el("div", { class: "ccs-err", text: "No sync data found yet." })); return; }
     const done = new Set(loadDone()), tasks = (auto?.tasks || []).filter(task => !done.has(task.id));
-    root.append(el("h3", { text: "Suggested ZesaTracker tasks (" + tasks.length + ")" }),
+    root.append(el("h3", { text: "Suggested project tasks (" + tasks.length + ")" }),
       tasks.length ? el("ul", {}, tasks.map(task => {
         const checkbox = el("input", { type: "checkbox", "aria-label": "Mark done: " + task.title });
         checkbox.addEventListener("change", () => { const saved = loadDone(); saved.push(task.id); saveDone(saved); render(root); });
@@ -56,7 +56,7 @@
         if (task.link) details.append(el("small", {}, link(task.link, "Open")));
         return el("li", { class: "ccs-task" }, checkbox, details);
       })) : el("div", { class: "ccs-sub", text: "No automatic follow-up tasks right now." }));
-    root.append(el("h3", { text: "Production website and APIs" }));
+    root.append(el("h3", { text: "Production websites and APIs" }));
     const sites = status?.sites || [];
     root.append(el("ul", {}, sites.flatMap(site => {
       const rows = [el("li", {}, el("div", { class: "ccs-row" }, el("strong", {}, link(site.url, site.name)), el("span", { class: site.up ? "" : "ccs-bad", text: site.up ? "● Up" : "● Down" })),
@@ -64,7 +64,7 @@
       for (const endpoint of site.endpoints || []) rows.push(el("li", {}, el("div", { class: "ccs-row" }, el("strong", {}, link(endpoint.url, site.name + " " + endpoint.url.split("/").pop())), el("span", { class: endpoint.up ? "" : "ccs-bad", text: endpoint.up ? "HTTP " + endpoint.status : "Down" })), el("small", { text: "Checked " + ago(endpoint.checkedAt) })));
       return rows;
     })));
-    root.append(el("h3", { text: "ZesaTracker repository checks" }));
+    root.append(el("h3", { text: "GitHub repository checks" }));
     const repos = status?.repos || [];
     root.append(el("ul", {}, repos.map(item => {
       const run = item.latestRun;
@@ -77,7 +77,7 @@
   }
   function mount() {
     injectStyle();
-    const root = el("section", { id: "cc-sync", class: "ccs", "aria-label": "ZesaTracker live checks" });
+    const root = el("section", { id: "cc-sync", class: "ccs", "aria-label": "Project health checks" });
     const page = document.querySelector(".wrap");
     if (page) page.insertBefore(root, page.querySelector(".grid"));
     else document.body.prepend(root);
