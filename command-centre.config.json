@@ -16,6 +16,18 @@
           "url": "https://zesatracker.vercel.app/api/reports"
         }
       ]
+    },
+    {
+      "id": "zimmarket",
+      "name": "ZimMarket",
+      "url": "https://zimmarket-expo.vercel.app/",
+      "checks": []
+    },
+    {
+      "id": "command-centre",
+      "name": "STG Command Centre",
+      "url": "https://shepherdgumbo.github.io/stg-command-centre-/",
+      "checks": []
     }
   ],
   "repos": [
@@ -23,6 +35,16 @@
       "id": "zesatracker",
       "name": "ZesaTracker",
       "repo": "shepherdgumbo/zesatracker"
+    },
+    {
+      "id": "zimmarket",
+      "name": "ZimMarket",
+      "repo": "shepherdgumbo/Shepherd-"
+    },
+    {
+      "id": "command-centre",
+      "name": "Command Centre",
+      "repo": "shepherdgumbo/stg-command-centre-"
     }
   ]
 }
