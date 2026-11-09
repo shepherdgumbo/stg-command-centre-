@@ -1,48 +1,71 @@
-# STG Command Centre — ZesaTracker
+# STG Command Centre
 
-A mobile-friendly dashboard focused on one project: ZesaTracker.
+A mobile-friendly operations dashboard for three projects: **ZesaTracker**, **ZimMarket**, and the Command Centre itself.
 
-**Live site:** https://shepherdgumbo.github.io/stg-command-centre-/
+**Live dashboard:** https://shepherdgumbo.github.io/stg-command-centre/
 
-## Features
+## What it does
 
-- ZesaTracker production link, GitHub source and Vercel deployment links.
-- Automatic checks for the public website, health API and reports API.
-- ZesaTracker repository workflow status when a read-only GitHub token is configured.
-- Add, complete, categorize and delete ZesaTracker tasks.
-- Post-deployment checklist for mobile layout, key flows and release checks.
-- Export and import a JSON backup of tasks and checklist state.
-- Install as a web app where the browser supports installation.
-- Offline app shell after the first successful online load and service-worker install.
+- Checks the ZesaTracker website and its health and community-reports API endpoints.
+- Checks the ZimMarket production website.
+- Checks the Command Centre's own published website.
+- Reads the latest GitHub Actions workflow result for each configured repository when repository access permits.
+- Generates follow-up tasks when websites, APIs or repository checks fail.
+- Lets you add, categorize, complete and delete tasks for all three projects.
+- Keeps tasks and the post-deployment checklist in this browser on this device.
+- Exports and imports a JSON backup.
+- Provides an installable offline app shell where supported.
+
+## Projects
+
+| Project | Production | Source |
+|---|---|---|
+| ZesaTracker | https://zesatracker.vercel.app/ | https://github.com/shepherdgumbo/zesatracker |
+| ZimMarket | https://zimmarket-expo.vercel.app/ | https://github.com/shepherdgumbo/Shepherd- |
+| STG Command Centre | https://shepherdgumbo.github.io/stg-command-centre-/ | https://github.com/shepherdgumbo/stg-command-centre- |
+
+## Automated monitoring
+
+The sync workflow runs twice daily at **06:00 and 18:00 UTC** (08:00 and 20:00 Zimbabwe time), and can be started manually. It updates `data/status.json` and `data/auto-tasks.json`.
+
+Public GitHub repositories can be checked without a personal token. The ZesaTracker repository is private and therefore needs a fine-grained, read-only GitHub token in the Command Centre repository's Actions secrets under the name `GH_READ_TOKEN` to inspect its Actions runs. Do not place a token in website files, task data, or browser storage. Without that secret, the dashboard still checks the public websites and repositories and reports that private-repository access is missing.
+
+The monitoring job checks HTTP responses and the latest available repository workflow. A responding URL is not proof that every feature works. Workflow data can also be stale if a scheduled sync has not run recently.
 
 ## Hosting
 
-### GitHub Pages
-
-This is a static site. GitHub Pages publishes the repository root from `main`. Deployment runs are available at:
+This is a static site published from the repository root on GitHub Pages. The Pages build workflow is available at:
 
 https://github.com/shepherdgumbo/stg-command-centre-/actions
 
-### Railway
+The repository also contains optional Railway files (`Dockerfile`, `server.mjs`, and `railway.json`), but the canonical public dashboard remains on GitHub Pages.
 
-The repository includes a root `Dockerfile`, `server.mjs`, and `railway.json` for Railway hosting. The lightweight server serves only the dashboard's public files, listens on Railway's injected `PORT`, and exposes `/healthz` for Railway's deployment health check.
+## Important project verification gates
 
-To deploy, connect this GitHub repository to a Railway service using the repository root as the source. Railway will detect the Dockerfile and build the service; generate a public domain in Railway's service networking settings after the first successful deployment. GitHub Pages remains available independently.
+### ZesaTracker
 
-## Automation and access
+- There is no verified live official outage feed connected. Do not state that an area currently has electricity or is affected by an outage based only on this dashboard.
+- Community reports are public, user-submitted and unverified. They do not create an official ZETDC fault ticket.
+- The AI assistant can fall back to built-in guidance when no AI model responds; the app must make that mode clear.
+- The solar planner provides estimates, not an installer design, quote or safety certification.
+- Confirm persistent report storage and test the assistant and report flow separately from HTTP health checks.
 
-The sync workflow runs twice daily and can also be started manually. It checks ZesaTracker website/API responses and retrieves repository workflow status when the `GH_READ_TOKEN` Actions secret is configured. Use a fine-grained token with read-only access to the ZesaTracker repository and Actions metadata. Never add credentials to HTML or browser storage.
+Production: https://zesatracker.vercel.app/  
+Android build workflow: https://github.com/shepherdgumbo/zesatracker/actions/workflows/build-zesatracker-android-apk.yml
 
-The dashboard task list and checklist are stored in this browser on this device/profile; they are not synced between devices. Export a backup before clearing browser data or changing devices. HTTP success indicates a route responded; manually test the solar planner, AI assistant and report flow after each release.
+### ZimMarket
 
-## Files
+- Public listings must remain admin-approved; no fabricated listings, reviews, ratings, seller badges or delivery promises.
+- USD and ZWL are displayed as listed. Do not convert one currency into the other.
+- The current app supports order requests and direct seller/customer arrangements; do not claim integrated payments.
+- A successful web or APK build does not prove Firebase registration, sign-in, seller approval, product moderation or order flows work.
+- Compare live Firestore and Storage rules with repository rules before deploying any security-rule changes. Do not deploy rules without that comparison.
 
-- `index.html` and `index-5.html` — dashboard
-- `command-centre.config.json` — ZesaTracker URLs and monitored endpoints
-- `scripts/sync.mjs` — scheduled site and repository checks
-- `sync-panel.js` — live status panel
-- `data/status.json` and `data/auto-tasks.json` — sync output
-- `Dockerfile`, `server.mjs`, and `railway.json` — Railway hosting
-- `manifest.webmanifest` and `sw.js` — installable offline shell
+Production: https://zimmarket-expo.vercel.app/  
+Android build workflow: https://github.com/shepherdgumbo/Shepherd-/actions/workflows/build-android-apk.yml
 
-There are no build-time package dependencies for the dashboard itself.
+## Using the dashboard
+
+Tasks and checklist state are stored locally in the current browser profile; they are not synchronized between devices. Export a backup before clearing browser data or changing devices. Importing a backup replaces the locally saved task list and checklist.
+
+After each release, manually test the affected app on a real phone, including its main customer journeys. Do not mark a feature as verified solely because a deployment or HTTP check succeeded.
