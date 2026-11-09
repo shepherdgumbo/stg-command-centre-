@@ -6,7 +6,7 @@ const now = new Date().toISOString();
 await fs.mkdir(DATA, { recursive: true });
 
 async function getJson(url, headers = {}) {
-  const response = await fetch(url, { headers });
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(10000) });
   const raw = await response.text();
   let body;
   try { body = JSON.parse(raw); } catch { body = null; }
@@ -34,9 +34,12 @@ async function checkSite(site) {
 }
 
 async function githubRepo(repo) {
+  // Public repositories work without a secret. A fine-grained, read-only
+  // GH_READ_TOKEN is used only when a monitored repository is private.
   const token = process.env.GH_READ_TOKEN;
-  if (!token) return { repo: repo.repo, name: repo.name, error: "GH_READ_TOKEN is missing; private repository checks need read access to " + repo.repo, checkedAt: now };
-  const headers = { authorization: "Bearer " + token, accept: "application/vnd.github+json" };
+  const headers = token
+    ? { authorization: "Bearer " + token, accept: "application/vnd.github+json" }
+    : { accept: "application/vnd.github+json" };
   try {
     const metadata = await getJson("https://api.github.com/repos/" + repo.repo, headers);
     const runs = await getJson("https://api.github.com/repos/" + repo.repo + "/actions/runs?per_page=1", headers);
@@ -49,7 +52,16 @@ async function githubRepo(repo) {
       checkedAt: now
     };
   } catch (error) {
-    return { repo: repo.repo, name: repo.name, error: "GitHub read access failed: " + error.message + ". Check GH_READ_TOKEN access to " + repo.repo, checkedAt: now };
+    const needsToken = !token && /404|Not Found|403|Forbidden/i.test(error.message);
+    return {
+      repo: repo.repo,
+      name: repo.name,
+      needsToken,
+      error: needsToken
+        ? "Private repository read access needs the GH_READ_TOKEN Actions secret."
+        : "GitHub read check failed: " + error.message,
+      checkedAt: now
+    };
   }
 }
 
@@ -64,7 +76,16 @@ for (const site of sites) {
 }
 for (const item of repos) {
   if (item?.latestRun?.conclusion === "failure") tasks.push({ id: "build-failed-" + item.repo, tag: "Build", title: "Latest workflow run failed for " + item.repo, link: "https://github.com/" + item.repo + "/actions" });
-  if (item?.error) tasks.push({ id: "repo-access-" + item.repo, tag: "GitHub", title: "Enable read access to the private ZesaTracker repository", link: "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions" });
+  if (item?.error) tasks.push({
+    id: (item.needsToken ? "repo-access-" : "repo-check-") + item.repo,
+    tag: "GitHub",
+    title: item.needsToken
+      ? "Add read-only GitHub access for the private " + item.name + " repository"
+      : "Review GitHub workflow monitoring for " + item.name,
+    link: item.needsToken
+      ? "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
+      : "https://github.com/" + item.repo + "/actions"
+  });
 }
 
 await fs.writeFile(new URL("status.json", DATA), JSON.stringify({ updatedAt: now, sites, repos }, null, 2) + "\n");
