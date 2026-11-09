@@ -1,5 +1,5 @@
-// ZesaTracker-focused STG Command Centre offline app shell.
-const CACHE_NAME = "stg-command-centre-zesa-v2";
+// Multi-project STG Command Centre offline app shell.
+const CACHE_NAME = "stg-command-centre-projects-v1";
 const APP_SHELL = ["./", "./index.html", "./index-5.html", "./manifest.webmanifest", "./icon.svg", "./sync-panel.js", "./data/status.json", "./data/auto-tasks.json"];
 
 self.addEventListener("install", event => {
