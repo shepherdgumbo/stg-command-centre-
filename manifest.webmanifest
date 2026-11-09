@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "STG Command Centre — ZesaTracker",
-  "short_name": "STG Zesa",
-  "description": "A focused workspace for ZesaTracker tasks, health checks and deployments.",
+  "name": "STG Command Centre — Projects",
+  "short_name": "STG Hub",
+  "description": "A mobile workspace for ZesaTracker, ZimMarket and STG operations.",
   "lang": "en",
   "start_url": "./",
   "scope": "./",
