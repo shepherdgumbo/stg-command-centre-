@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T00:18:10.223Z",
+  "updatedAt": "2026-11-12T14:43:56.294Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,19 +7,19 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-12T00:18:10.223Z",
+      "checkedAt": "2026-11-12T14:43:56.294Z",
       "endpoints": [
         {
           "url": "https://zesatracker.vercel.app/api/health",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-11-12T00:18:10.223Z"
+          "checkedAt": "2026-11-12T14:43:56.294Z"
         },
         {
           "url": "https://zesatracker.vercel.app/api/reports",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-11-12T00:18:10.223Z"
+          "checkedAt": "2026-11-12T14:43:56.294Z"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "url": "https://zimmarket-expo.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-12T00:18:10.223Z",
+      "checkedAt": "2026-11-12T14:43:56.294Z",
       "endpoints": []
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://shepherdgumbo.github.io/stg-command-centre-/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-12T00:18:10.223Z",
+      "checkedAt": "2026-11-12T14:43:56.294Z",
       "endpoints": []
     }
   ],
@@ -48,7 +48,7 @@
       "name": "ZesaTracker",
       "needsToken": true,
       "error": "Private repository read access needs the GH_READ_TOKEN Actions secret.",
-      "checkedAt": "2026-11-12T00:18:10.223Z"
+      "checkedAt": "2026-11-12T14:43:56.294Z"
     },
     {
       "repo": "shepherdgumbo/Shepherd-",
@@ -56,25 +56,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 41603115429,
+        "id": 43221934770,
         "name": "Build standalone ZimMarket Android APK",
-        "node_id": "WFR_kwLOT2Ndwc8AAAAJr70ppQ",
+        "node_id": "WFR_kwLOT2Ndwc8AAAAKEDpisg",
         "head_branch": "main",
-        "head_sha": "3d6fcde441b6c29d2417f83aded40f967de1b4f8",
+        "head_sha": "b255274e76b5e636b2169f171828f3162b362190",
         "path": ".github/workflows/build-android-apk.yml",
-        "display_title": "fix(android): correct APK ABI verification pattern",
-        "run_number": 70,
+        "display_title": "Fix registration flow: explicit account creation",
+        "run_number": 72,
         "event": "push",
         "status": "completed",
         "conclusion": "success",
         "workflow_id": 394963453,
-        "check_suite_id": 112733705385,
-        "check_suite_node_id": "CS_kwDOT2Ndwc8AAAAaP3PUqQ",
-        "url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429",
-        "html_url": "https://github.com/shepherdgumbo/Shepherd-/actions/runs/41603115429",
+        "check_suite_id": 117040804371,
+        "check_suite_node_id": "CS_kwDOT2Ndwc8AAAAbQCzyEw",
+        "url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770",
+        "html_url": "https://github.com/shepherdgumbo/Shepherd-/actions/runs/43221934770",
         "pull_requests": [],
-        "created_at": "2026-11-03T08:25:04Z",
-        "updated_at": "2026-11-03T08:34:47Z",
+        "created_at": "2026-11-12T12:52:35Z",
+        "updated_at": "2026-11-12T13:00:16Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -98,7 +98,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-11-03T08:25:04Z",
+        "run_started_at": "2026-11-12T12:52:35Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -120,26 +120,26 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/check-suites/112733705385",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/41603115429/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/check-suites/117040804371",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/runs/43221934770/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/actions/workflows/394963453",
         "head_commit": {
-          "id": "3d6fcde441b6c29d2417f83aded40f967de1b4f8",
-          "tree_id": "17b5589c0d088581eee02f4642ae383e8ba0280a",
-          "message": "fix(android): correct APK ABI verification pattern",
-          "timestamp": "2026-11-03T08:25:02Z",
+          "id": "b255274e76b5e636b2169f171828f3162b362190",
+          "tree_id": "1d55facaa24144eea97f85867613a06aa6516d90",
+          "message": "Fix registration flow: explicit account creation\n\nKeep account creation separate from sign-in. Preserve profile recovery through the explicit sign-in flow.",
+          "timestamp": "2026-11-12T12:52:31Z",
           "author": {
             "name": "shepherdgumbo",
             "email": "shepherdgumbo06@gmail.com"
           },
           "committer": {
-            "name": "shepherdgumbo",
-            "email": "shepherdgumbo06@gmail.com"
+            "name": "GitHub",
+            "email": "noreply@github.com"
           }
         },
         "repository": {
@@ -279,7 +279,7 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/deployments"
         }
       },
-      "checkedAt": "2026-11-12T00:18:10.223Z"
+      "checkedAt": "2026-11-12T14:43:56.294Z"
     },
     {
       "repo": "shepherdgumbo/stg-command-centre-",
@@ -287,25 +287,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 43126272283,
+        "id": 43240220166,
         "name": "Command Centre sync",
-        "node_id": "WFR_kwLOVCqtYs8AAAAKCoaxGw",
+        "node_id": "WFR_kwLOVCqtYs8AAAAKEVFmBg",
         "head_branch": "main",
-        "head_sha": "802accde21e76b82bddcb7b97fd781710ede505f",
+        "head_sha": "ede720ae39b5cad23062fb5d96d7de8a0b4eeb83",
         "path": ".github/workflows/command-centre-sync.yml",
         "display_title": "Command Centre sync",
-        "run_number": 68,
+        "run_number": 69,
         "event": "schedule",
         "status": "in_progress",
         "conclusion": null,
         "workflow_id": 386788891,
-        "check_suite_id": 116788285670,
-        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAbMR_Q5g",
-        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283",
-        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/43126272283",
+        "check_suite_id": 117091463981,
+        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAbQzHzLQ",
+        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166",
+        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/43240220166",
         "pull_requests": [],
-        "created_at": "2026-11-12T00:18:03Z",
-        "updated_at": "2026-11-12T00:18:06Z",
+        "created_at": "2026-11-12T14:43:51Z",
+        "updated_at": "2026-11-12T14:43:54Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -329,7 +329,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-11-12T00:18:03Z",
+        "run_started_at": "2026-11-12T14:43:51Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -351,19 +351,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/116788285670",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/117091463981",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43240220166/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/386788891",
         "head_commit": {
-          "id": "802accde21e76b82bddcb7b97fd781710ede505f",
-          "tree_id": "0d7a7cec72ad8d6d203e23f130e6c3bd2b75583e",
+          "id": "ede720ae39b5cad23062fb5d96d7de8a0b4eeb83",
+          "tree_id": "8c599a83877cb9fa17c18bdc2abaa9f488cfd385",
           "message": "chore: update ZesaTracker status",
-          "timestamp": "2026-11-11T13:40:32Z",
+          "timestamp": "2026-11-12T00:18:12Z",
           "author": {
             "name": "github-actions[bot]",
             "email": "41898282+github-actions[bot]@users.noreply.github.com"
@@ -510,7 +510,7 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/deployments"
         }
       },
-      "checkedAt": "2026-11-12T00:18:10.223Z"
+      "checkedAt": "2026-11-12T14:43:56.294Z"
     }
   ]
 }
