@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T13:40:30.381Z",
+  "updatedAt": "2026-11-12T00:18:10.223Z",
   "sites": [
     {
       "id": "zesatracker",
@@ -7,19 +7,19 @@
       "url": "https://zesatracker.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-11T13:40:30.381Z",
+      "checkedAt": "2026-11-12T00:18:10.223Z",
       "endpoints": [
         {
           "url": "https://zesatracker.vercel.app/api/health",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-11-11T13:40:30.381Z"
+          "checkedAt": "2026-11-12T00:18:10.223Z"
         },
         {
           "url": "https://zesatracker.vercel.app/api/reports",
           "up": true,
           "status": 200,
-          "checkedAt": "2026-11-11T13:40:30.381Z"
+          "checkedAt": "2026-11-12T00:18:10.223Z"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "url": "https://zimmarket-expo.vercel.app/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-11T13:40:30.381Z",
+      "checkedAt": "2026-11-12T00:18:10.223Z",
       "endpoints": []
     },
     {
@@ -38,7 +38,7 @@
       "url": "https://shepherdgumbo.github.io/stg-command-centre-/",
       "up": true,
       "status": 200,
-      "checkedAt": "2026-11-11T13:40:30.381Z",
+      "checkedAt": "2026-11-12T00:18:10.223Z",
       "endpoints": []
     }
   ],
@@ -48,7 +48,7 @@
       "name": "ZesaTracker",
       "needsToken": true,
       "error": "Private repository read access needs the GH_READ_TOKEN Actions secret.",
-      "checkedAt": "2026-11-11T13:40:30.381Z"
+      "checkedAt": "2026-11-12T00:18:10.223Z"
     },
     {
       "repo": "shepherdgumbo/Shepherd-",
@@ -279,7 +279,7 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/Shepherd-/deployments"
         }
       },
-      "checkedAt": "2026-11-11T13:40:30.381Z"
+      "checkedAt": "2026-11-12T00:18:10.223Z"
     },
     {
       "repo": "shepherdgumbo/stg-command-centre-",
@@ -287,25 +287,25 @@
       "private": false,
       "defaultBranch": "main",
       "latestRun": {
-        "id": 43031239176,
+        "id": 43126272283,
         "name": "Command Centre sync",
-        "node_id": "WFR_kwLOVCqtYs8AAAAKBNyaCA",
+        "node_id": "WFR_kwLOVCqtYs8AAAAKCoaxGw",
         "head_branch": "main",
-        "head_sha": "0c5425ac28e9e361b7c7e44cd35f48a4a82b2967",
+        "head_sha": "802accde21e76b82bddcb7b97fd781710ede505f",
         "path": ".github/workflows/command-centre-sync.yml",
         "display_title": "Command Centre sync",
-        "run_number": 67,
+        "run_number": 68,
         "event": "schedule",
         "status": "in_progress",
         "conclusion": null,
         "workflow_id": 386788891,
-        "check_suite_id": 116529591517,
-        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAbIbR03Q",
-        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176",
-        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/43031239176",
+        "check_suite_id": 116788285670,
+        "check_suite_node_id": "CS_kwDOVCqtYs8AAAAbMR_Q5g",
+        "url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283",
+        "html_url": "https://github.com/shepherdgumbo/stg-command-centre-/actions/runs/43126272283",
         "pull_requests": [],
-        "created_at": "2026-11-11T13:40:22Z",
-        "updated_at": "2026-11-11T13:40:25Z",
+        "created_at": "2026-11-12T00:18:03Z",
+        "updated_at": "2026-11-12T00:18:06Z",
         "actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -329,7 +329,7 @@
         },
         "run_attempt": 1,
         "referenced_workflows": [],
-        "run_started_at": "2026-11-11T13:40:22Z",
+        "run_started_at": "2026-11-12T00:18:03Z",
         "triggering_actor": {
           "login": "shepherdgumbo",
           "id": 315392994,
@@ -351,19 +351,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176/jobs",
-        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176/logs",
-        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/116529591517",
-        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176/artifacts",
-        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176/cancel",
-        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43031239176/rerun",
+        "jobs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/jobs",
+        "logs_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/logs",
+        "check_suite_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/check-suites/116788285670",
+        "artifacts_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/artifacts",
+        "cancel_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/cancel",
+        "rerun_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/runs/43126272283/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/actions/workflows/386788891",
         "head_commit": {
-          "id": "0c5425ac28e9e361b7c7e44cd35f48a4a82b2967",
-          "tree_id": "409ec7b264488357e74bd5612e2749c22c62c4e2",
+          "id": "802accde21e76b82bddcb7b97fd781710ede505f",
+          "tree_id": "0d7a7cec72ad8d6d203e23f130e6c3bd2b75583e",
           "message": "chore: update ZesaTracker status",
-          "timestamp": "2026-11-10T23:01:38Z",
+          "timestamp": "2026-11-11T13:40:32Z",
           "author": {
             "name": "github-actions[bot]",
             "email": "41898282+github-actions[bot]@users.noreply.github.com"
@@ -510,7 +510,7 @@
           "deployments_url": "https://api.github.com/repos/shepherdgumbo/stg-command-centre-/deployments"
         }
       },
-      "checkedAt": "2026-11-11T13:40:30.381Z"
+      "checkedAt": "2026-11-12T00:18:10.223Z"
     }
   ]
 }
