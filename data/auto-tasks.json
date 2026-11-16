@@ -1,22 +1,10 @@
 {
-  "updatedAt": "2026-11-15T22:39:04.711Z",
+  "updatedAt": "2026-11-16T14:58:41.764Z",
   "tasks": [
     {
       "id": "repo-access-shepherdgumbo/zesatracker",
       "tag": "GitHub",
       "title": "Add read-only GitHub access for the private ZesaTracker repository",
-      "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
-    },
-    {
-      "id": "repo-access-shepherdgumbo/Shepherd-",
-      "tag": "GitHub",
-      "title": "Add read-only GitHub access for the private ZimMarket repository",
-      "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
-    },
-    {
-      "id": "repo-access-shepherdgumbo/stg-command-centre-",
-      "tag": "GitHub",
-      "title": "Add read-only GitHub access for the private Command Centre repository",
       "link": "https://github.com/shepherdgumbo/stg-command-centre-/settings/secrets/actions"
     }
   ]
